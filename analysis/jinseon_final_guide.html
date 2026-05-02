@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>진선여고 역학과 에너지 기말고사 수업안내</title>
+    <style>
+        /* Modern Typography - Using system fonts and clean sans-serif */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+        :root {
+            --primary: #000000;
+            --secondary: #666666;
+            --accent: #E30613; /* Strong Red accent */
+            --bg: #FFFFFF;
+            --card-bg: #F8F8F9;
+            --border: #EEEEEE;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans KR', -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--primary);
+            line-height: 1.6;
+            word-break: keep-all;
+        }
+
+        .container {
+            max-width: 480px; /* Optimized for smartphone viewing */
+            margin: 0 auto;
+            padding: 50px 24px;
+        }
+
+        /* Header Section */
+        header {
+            margin-bottom: 64px;
+        }
+
+        .category {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.04em;
+            margin-bottom: 24px;
+        }
+
+        .intro-text {
+            font-size: 16px;
+            color: var(--secondary);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 56px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .section-header h2 {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: #999999;
+            text-transform: uppercase;
+        }
+
+        .section-header .line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+            margin-left: 12px;
+        }
+
+        /* Card / Block Styling */
+        .content-block {
+            margin-bottom: 32px;
+        }
+
+        .philosophy-card {
+            background-color: var(--card-bg);
+            padding: 32px 24px;
+            border-radius: 16px;
+            margin-bottom: 48px;
+        }
+
+        .philosophy-card p {
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.45;
+            color: var(--primary);
+        }
+
+        .philosophy-card .sub {
+            font-size: 14px;
+            color: var(--secondary);
+            margin-top: 12px;
+        }
+
+        /* Curriculum List */
+        .curriculum-item {
+            margin-bottom: 36px;
+        }
+
+        .item-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+
+        .item-title {
+            font-size: 21px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .item-desc {
+            font-size: 15px;
+            color: var(--secondary);
+            margin-bottom: 16px;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            font-size: 12px;
+            padding: 4px 12px;
+            background: #F0F0F2;
+            border-radius: 6px;
+            font-weight: 500;
+            color: #444444;
+        }
+
+        /* Table-like List for Phase 2 */
+        .resource-list {
+            list-style: none;
+        }
+
+        .resource-row {
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .resource-name {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .resource-badge {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border: 1px solid #CCCCCC;
+            border-radius: 4px;
+            color: #888888;
+            text-transform: uppercase;
+        }
+
+        /* System Info */
+        .system-highlight {
+            padding: 24px;
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+        }
+
+        .system-title {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .system-text {
+            font-size: 14px;
+            color: var(--secondary);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 100px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            margin-bottom: 8px;
+        }
+
+        .footer-desc {
+            font-size: 12px;
+            color: #BBBBBB;
+        }
+
+        /* PDF Layout adjustments */
+        @page {
+            size: A4;
+            margin: 0;
+            background-color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <p class="category">2026 Final Examination</p>
+            <h1>역학과 에너지<br>수업 안내</h1>
+            <p class="intro-text">
+                진선여고의 출제 코드와 완벽히 일치하는<br>
+                고밀도 실전 대비 수업입니다.
+            </p>
+        </header>
+
+        <section>
+            <div class="philosophy-card">
+                <p>"왜 그런지 남에게 설명할 수 있는 실력이 진짜 실력입니다."</p>
+                <p class="sub">중간고사에서 입증된 논리적 흐름의 힘을 기말에도 이어갑니다.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <h2>Phase 1. Concept</h2>
+                <div class="line"></div>
+            </div>
+            
+            <div class="curriculum-item">
+                <p class="item-label">WEEK 01</p>
+                <p class="item-title">열역학과 엔트로피</p>
+                <p class="item-desc">열역학 제1, 2법칙의 정성적 이해 및 엔트로피의 물리적 의미 정립</p>
+                <div class="tag-container">
+                    <span class="tag">물리Ⅰ 내용 포함</span>
+                    <span class="tag">이론 퀴즈</span>
+                </div>
+            </div>
+
+            <div class="curriculum-item">
+                <p class="item-label">WEEK 02</p>
+                <p class="item-title">탄성파와 도플러 효과</p>
+                <p class="item-desc">파동의 발생 원리, 도플러 효과 공식 유도 및 현상 해석</p>
+                <div class="tag-container">
+                    <span class="tag">물리Ⅰ 내용 포함</span>
+                    <span class="tag">이론 퀴즈</span>
+                    <span class="tag">이론 마감</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <h2>Phase 2. Intensive</h2>
+                <div class="line"></div>
+            </div>
+            <p class="item-desc" style="margin-bottom: 24px;">3강 이후 : 방대한 문항 훈련을 통한 변별력 확보</p>
+            
+            <ul class="resource-list">
+                <li class="resource-row">
+                    <span class="resource-name">교과서 2종 정밀 분석</span>
+                    <span class="resource-badge">Basic</span>
+                </li>
+                <li class="resource-row">
+                    <span class="resource-name">EBS 수특 2점 · 3점</span>
+                    <span class="resource-badge">Practice</span>
+                </li>
+                <li class="resource-row">
+                    <span class="resource-name">개정 전 물2 평가원 · 수능 기출</span>
+                    <span class="resource-badge">Deep</span>
+                </li>
+                <li class="resource-row">
+                    <span class="resource-name">서술형 변형 대표 문항</span>
+                    <span class="resource-badge">Critical</span>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <h2>Learning System</h2>
+                <div class="line"></div>
+            </div>
+            <div class="system-highlight">
+                <p class="system-title">Pre-Assignment & Feedback</p>
+                <p class="system-text">
+                    숙제는 매주 미리 배포됩니다. 스스로 치열하게 고민한 뒤, 수업 시간에는 자신의 풀이를 <strong>3단계 로직(자유물체도-성분분해-운동방정식)</strong>으로 교정하고 체화합니다.
+                </p>
+            </div>
+        </section>
+
+        <footer>
+            <p class="footer-logo">CHH PHYSICS</p>
+            <p class="footer-desc">Logical Insight & Professional Education</p>
+        </footer>
+    </div>
+</body>
+</html>
