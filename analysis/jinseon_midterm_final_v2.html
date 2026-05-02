@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>진선여고 중간고사 분석 · 최종 보고서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,800&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf9f5;
+    --paper: #ffffff;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --ink-mute: #8a8a8a;
+    --line: #e8e5dc;
+    --line-soft: #f0ede4;
+    --accent: #b8401c;
+    --accent-soft: #f4e6df;
+    --green: #2d5f3f;
+    --green-soft: #e3ede5;
+    --amber: #b8862a;
+    --amber-soft: #f4ebd4;
+    --red: #9c2323;
+    --red-soft: #f3dede;
+    --blue: #2b4a7a;
+    --blue-soft: #dde5f0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+
+  /* Header */
+  header {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 28px;
+    margin-bottom: 32px;
+  }
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(28px, 6vw, 38px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--accent);
+  }
+  .meta {
+    font-size: 12px;
+    color: var(--ink-mute);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+  }
+  .meta span::before {
+    content: '·';
+    margin-right: 6px;
+    color: var(--line);
+  }
+  .meta span:first-child::before { content: none; margin: 0; }
+
+  /* Privacy notice */
+  .notice {
+    margin-top: 18px;
+    padding: 12px 14px;
+    background: var(--paper);
+    border: 1px dashed var(--line);
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .notice strong { color: var(--ink); font-weight: 600; }
+
+  /* Part divider */
+  .part-divider {
+    margin: 60px 0 36px;
+    text-align: center;
+    position: relative;
+  }
+  .part-divider::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: var(--line);
+  }
+  .part-divider span {
+    background: var(--bg);
+    padding: 0 18px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    position: relative;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 16px 18px;
+    margin-bottom: 36px;
+  }
+  .toc-title {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .toc ol {
+    list-style: none;
+    padding: 0;
+    counter-reset: t;
+  }
+  .toc li {
+    counter-increment: t;
+    padding: 6px 0;
+    font-size: 13.5px;
+    border-top: 1px dashed var(--line);
+  }
+  .toc li:first-child { border-top: none; }
+  .toc li::before {
+    content: counter(t, decimal-leading-zero);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--accent);
+    margin-right: 10px;
+    font-weight: 400;
+  }
+  .toc a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .toc a:hover { color: var(--accent); }
+
+  /* Section */
+  section { margin-bottom: 48px; }
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  h2 .num {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--accent);
+  }
+  h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+    margin: 24px 0 10px;
+    color: var(--ink);
+  }
+  .section-sub {
+    font-size: 13px;
+    color: var(--ink-mute);
+    margin-bottom: 18px;
+  }
+
+  /* Hero stats */
+  .hero {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 24px 22px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+  }
+  .hero-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 40px;
+    line-height: 1.1;
+    color: #f0a070;
+    margin-bottom: 10px;
+    letter-spacing: -0.03em;
+  }
+  .hero-num strong {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--bg);
+    font-size: 48px;
+  }
+  .hero-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(250,249,245,0.88);
+  }
+  .hero-text strong { color: var(--bg); font-weight: 600; }
+  .hero-text + .hero-text { margin-top: 10px; }
+
+  /* Stat Grid */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .stat {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 14px 14px 12px;
+    border-radius: 4px;
+  }
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .stat-value {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .stat-value small {
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--ink-mute);
+    margin-left: 3px;
+    letter-spacing: 0;
+  }
+  .stat-note {
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+
+  /* Difficulty bar */
+  .diff-bar {
+    display: flex;
+    height: 36px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 12px 0 10px;
+    border: 1px solid var(--line);
+  }
+  .diff-bar > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.02em;
+  }
+  .diff-low { background: var(--green); }
+  .diff-mid { background: var(--amber); }
+  .diff-high { background: var(--red); }
+  .diff-legend {
+    display: flex;
+    gap: 14px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    flex-wrap: wrap;
+  }
+  .diff-legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .dot {
+    width: 10px; height: 10px; border-radius: 2px; display: inline-block;
+  }
+
+  /* Distribution */
+  .dist-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .dist-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    align-items: baseline;
+  }
+  .dist-label {
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .dist-meta {
+    font-size: 12px;
+    color: var(--ink-mute);
+    font-variant-numeric: tabular-nums;
+  }
+  .dist-track {
+    grid-column: 1 / -1;
+    height: 5px;
+    background: var(--line-soft);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 2px;
+  }
+  .dist-fill {
+    height: 100%;
+    background: var(--ink);
+    border-radius: 3px;
+  }
+  .dist-fill.accent { background: var(--accent); }
+
+  /* Insight */
+  .insight {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    padding: 14px 16px;
+    border-radius: 4px;
+    margin-top: 14px;
+  }
+  .insight.alert { border-left-color: var(--red); }
+  .insight-title {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .insight.alert .insight-title { color: var(--red); }
+  .insight p {
+    font-size: 13.5px;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .insight p + p { margin-top: 8px; }
+  .insight strong {
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .insight.alert strong { color: var(--red); }
+
+  /* Coverage */
+  .coverage {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .coverage-head {
+    display: grid;
+    grid-template-columns: 50px 1fr 56px 56px;
+    background: var(--line-soft);
+    padding: 10px 12px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 600;
+    gap: 6px;
+  }
+  .coverage-row {
+    display: grid;
+    grid-template-columns: 50px 1fr 56px 56px;
+    padding: 12px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    align-items: center;
+    gap: 6px;
+  }
+  .coverage-row .qnum {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .coverage-row .qnum.sa {
+    font-size: 12px;
+    color: var(--blue);
+    font-style: italic;
+  }
+  .coverage-row .topic {
+    font-size: 13px;
+    line-height: 1.35;
+  }
+  .coverage-row .topic small {
+    display: block;
+    color: var(--ink-mute);
+    font-size: 10.5px;
+    margin-top: 2px;
+  }
+  .pill {
+    display: inline-block;
+    font-size: 9.5px;
+    padding: 3px 6px;
+    border-radius: 999px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    width: 100%;
+  }
+  .pill.full { background: var(--green-soft); color: var(--green); }
+  .pill.partial { background: var(--amber-soft); color: var(--amber); }
+  .pill.weak { background: var(--red-soft); color: var(--red); }
+  .pill.diff-h { background: var(--green-soft); color: var(--green); }
+  .pill.diff-m { background: var(--amber-soft); color: var(--amber); }
+  .pill.diff-s { background: var(--red-soft); color: var(--red); }
+
+  .sa-tag {
+    display: inline-block;
+    background: var(--blue-soft);
+    color: var(--blue);
+    font-size: 9px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+
+  /* Detail card */
+  .detail-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+  }
+  .detail-card.alert { border-left: 3px solid var(--red); }
+  .detail-card.warn { border-left: 3px solid var(--amber); }
+  .detail-card.safe { border-left: 3px solid var(--green); }
+  .detail-card.special { border-left: 3px solid var(--blue); }
+
+  .detail-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .detail-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+  }
+  .detail-num small {
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-size: 11px;
+    color: var(--ink-mute);
+    margin-left: 6px;
+    font-weight: 400;
+  }
+  .detail-tags {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+  .detail-tags .pill { width: auto; padding: 3px 8px; font-size: 9.5px; }
+
+  .detail-topic {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .detail-topic small {
+    display: block;
+    font-size: 11.5px;
+    color: var(--ink-mute);
+    font-weight: 400;
+    margin-top: 3px;
+  }
+
+  .detail-body dl {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 8px 12px;
+    font-size: 12.5px;
+    line-height: 1.55;
+  }
+  .detail-body dt {
+    color: var(--ink-mute);
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-top: 2px;
+  }
+  .detail-body dd {
+    color: var(--ink-soft);
+  }
+  .detail-body dd strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .detail-body dd .b-ink {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* Quote */
+  .quote {
+    border-left: 2px solid var(--ink);
+    padding: 4px 0 4px 18px;
+    margin: 16px 0;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .quote-source {
+    display: block;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-style: normal;
+    font-size: 11px;
+    color: var(--ink-mute);
+    margin-top: 6px;
+    letter-spacing: 0.05em;
+  }
+  .quote.featured {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    padding: 18px 22px;
+    border-radius: 4px;
+    font-size: 17px;
+  }
+  .quote.featured .quote-source {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* Verdict */
+  .verdict {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 22px 20px;
+    border-radius: 6px;
+    margin-top: 14px;
+  }
+  .verdict h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 17px;
+    margin: 0 0 14px;
+    letter-spacing: -0.01em;
+    color: var(--bg);
+  }
+  .verdict-row {
+    padding: 11px 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .verdict-row:first-of-type { border-top: none; padding-top: 0; }
+  .verdict-row::before {
+    content: counter(v);
+    counter-increment: v;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: #f0a070;
+    flex-shrink: 0;
+    min-width: 14px;
+  }
+  .verdict { counter-reset: v; }
+  .verdict-row strong {
+    color: white;
+    font-weight: 600;
+  }
+
+  /* Strategy box */
+  .strategy {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 16px 18px;
+    margin-top: 12px;
+  }
+  .strategy-title {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .strategy-title::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .strategy ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  .strategy li {
+    position: relative;
+    padding-left: 14px;
+  }
+  .strategy li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--ink-mute);
+  }
+  .strategy strong { color: var(--accent); font-weight: 600; }
+
+  /* Match table */
+  .match-table {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 14px;
+  }
+  .match-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--line);
+  }
+  .match-row:first-child { border-top: none; }
+  .match-row > div {
+    padding: 12px 14px;
+    font-size: 12.5px;
+    line-height: 1.55;
+  }
+  .match-row .label {
+    background: var(--line-soft);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+  }
+  .match-row .value strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .match-row .value .b-ink {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* Strength box */
+  .strength {
+    background: linear-gradient(135deg, var(--accent-soft) 0%, var(--paper) 100%);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    padding: 22px 22px 18px;
+    margin-top: 14px;
+  }
+  .strength-tag {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .strength h3 {
+    font-family: 'Fraunces', serif;
+    margin: 0 0 14px;
+    color: var(--ink);
+    font-size: 18px;
+  }
+  .strength-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .strength-item {
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 4px;
+    border-left: 2px solid var(--accent);
+  }
+  .strength-item-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .strength-item-body {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-size: 10.5px;
+    color: var(--ink-mute);
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  footer p + p { margin-top: 4px; }
+
+  @media (min-width: 600px) {
+    .stat-grid { grid-template-columns: repeat(4, 1fr); }
+    .container { padding: 48px 28px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="eyebrow">Final Report · 22문항 분석</div>
+    <h1>진선여고 중간고사<br><em>물리학 분석</em></h1>
+    <div class="meta">
+      <span>역학과 에너지</span>
+      <span>객관식 16 + 서답형 6</span>
+      <span>2026 출제 기준</span>
+    </div>
+    <div class="notice">
+      <strong>안내</strong> — 본 보고서에는 문제 사진을 넣지 않았습니다. 원본에 개인정보가 노출될 수 있기 때문입니다. 대신 유형과 분석을 최대한 세밀하게 정리하였습니다.
+    </div>
+  </header>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <div class="toc-title">목차</div>
+    <ol>
+      <li><a href="#s1">한눈에 보는 시험</a></li>
+      <li><a href="#s2">파트별 빈도와 난이도</a></li>
+      <li><a href="#s3">학교 vs 우리 수업 커버리지</a></li>
+      <li><a href="#s4">총평 및 강사 코멘트</a></li>
+      <li><a href="#s5">문항별 세부 분석 (객관식 16)</a></li>
+      <li><a href="#s6">문항별 세부 분석 (서답형 6)</a></li>
+      <li><a href="#s7">준비했어야 할 방향</a></li>
+      <li><a href="#s8">우리 수업의 적중도</a></li>
+      <li><a href="#s9">학생이 길러야 할 역량</a></li>
+      <li><a href="#s10">강사의 강점</a></li>
+    </ol>
+  </nav>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━ PART I ━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <div class="part-divider"><span>PART I — 전체 요약</span></div>
+
+  <!-- 1. 한눈에 -->
+  <section id="s1">
+    <h2><span class="num">01</span>한눈에 보는 시험</h2>
+    <p class="section-sub">시험의 큰 그림.</p>
+
+    <div class="hero">
+      <div class="hero-num"><strong>22</strong>문항</div>
+      <p class="hero-text">객관식 <strong>16문항</strong> + 서답형 <strong>6문항(30점)</strong> 구성. 출제 범위는 「역학과 에너지」 6개 단원 전 영역을 빠짐없이 훑었음.</p>
+      <p class="hero-text">학생이 체감하는 난이도는 <strong>'상'</strong>. 문항 수가 많고 시간이 제한되어 있어, 모든 단원이 훈련되어 있고 빠르게 풀어야 시간을 확보해 어려운 문제까지 도달할 수 있는 구조.</p>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-label">단원 커버</div>
+        <div class="stat-value">6<small>개</small></div>
+        <div class="stat-note">전 영역 출제</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">최다 단원</div>
+        <div class="stat-value">포물선<small>6문항</small></div>
+        <div class="stat-note">평면운동 27%</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">최고 배점</div>
+        <div class="stat-value">7<small>점</small></div>
+        <div class="stat-note">서답형 4 (뉴턴)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">서답형 비중</div>
+        <div class="stat-value">30<small>점</small></div>
+        <div class="stat-note">상 17점 집중</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 파트별 빈도와 난이도 -->
+  <section id="s2">
+    <h2><span class="num">02</span>파트별 빈도와 난이도</h2>
+    <p class="section-sub">단원별 출제량과 시험 전체 난이도 분포.</p>
+
+    <h3>단원별 출제 비율</h3>
+    <div class="dist-list">
+      <div class="dist-row">
+        <div class="dist-label">평면 운동 (포물선)</div>
+        <div class="dist-meta">6문항 · 27%</div>
+        <div class="dist-track"><div class="dist-fill accent" style="width: 27%"></div></div>
+      </div>
+      <div class="dist-row">
+        <div class="dist-label">만유인력 / 케플러</div>
+        <div class="dist-meta">5문항 · 23%</div>
+        <div class="dist-track"><div class="dist-fill" style="width: 23%"></div></div>
+      </div>
+      <div class="dist-row">
+        <div class="dist-label">일반 상대성 이론</div>
+        <div class="dist-meta">4문항 · 18%</div>
+        <div class="dist-track"><div class="dist-fill" style="width: 18%"></div></div>
+      </div>
+      <div class="dist-row">
+        <div class="dist-label">원운동 (원추진자)</div>
+        <div class="dist-meta">4문항 · 18%</div>
+        <div class="dist-track"><div class="dist-fill" style="width: 18%"></div></div>
+      </div>
+      <div class="dist-row">
+        <div class="dist-label">뉴턴 운동 법칙</div>
+        <div class="dist-meta">2문항 · 9%</div>
+        <div class="dist-track"><div class="dist-fill" style="width: 9%"></div></div>
+      </div>
+      <div class="dist-row">
+        <div class="dist-label">운동량 보존</div>
+        <div class="dist-meta">1문항 · 5%</div>
+        <div class="dist-track"><div class="dist-fill" style="width: 5%"></div></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 28px;">난이도 분포 (문항 자체 기준)</h3>
+    <div class="diff-bar">
+      <div class="diff-low" style="flex: 11;">하 11</div>
+      <div class="diff-mid" style="flex: 7;">중 7</div>
+      <div class="diff-high" style="flex: 4;">상 4</div>
+    </div>
+    <div class="diff-legend">
+      <span><i class="dot" style="background:var(--green)"></i>하 11문항</span>
+      <span><i class="dot" style="background:var(--amber)"></i>중 7문항</span>
+      <span><i class="dot" style="background:var(--red)"></i>상 4문항</span>
+    </div>
+
+    <div class="insight alert">
+      <div class="insight-title">중요 — 체감 난이도는 다르다</div>
+      <p>위 분포는 <strong>문항 자체의 독립적 난이도</strong>일 뿐. 학생들이 실제 시험장에서 느끼는 난이도는 <strong>'상'</strong>. 문항 수가 많고 시간 제한이 있어 평이한 문제도 빠르게 처리해야 어려운 문제까지 손을 댈 수 있다.</p>
+      <p>즉, <strong>"개별 문항이 평이하다 ≠ 시험이 쉽다"</strong>. 모든 단원이 충분히 훈련되어 있어야 시간 안에 풀어내고, 그렇게 확보한 시간으로 변별 문항을 잡는 구조다.</p>
+    </div>
+  </section>
+
+  <!-- 3. 학교 vs 우리 수업 -->
+  <section id="s3">
+    <h2><span class="num">03</span>학교 vs 우리 수업 커버리지</h2>
+    <p class="section-sub">각 유형이 학교와 자체 수업에서 얼마나 다뤄졌는지.</p>
+
+    <div class="coverage">
+      <div class="coverage-head">
+        <div>#</div>
+        <div>주제</div>
+        <div style="text-align:center">학교</div>
+        <div style="text-align:center">자체</div>
+      </div>
+
+      <div class="coverage-row"><div class="qnum">1</div><div class="topic">중력 렌즈<small>일반상대성</small></div><div><span class="pill full">충분</span></div><div><span class="pill full">충분</span></div></div>
+      <div class="coverage-row"><div class="qnum">2</div><div class="topic">2차원 등가속도<small>평면운동</small></div><div><span class="pill weak">거의 없음</span></div><div><span class="pill full">충분</span></div></div>
+      <div class="coverage-row"><div class="qnum">3</div><div class="topic">도르래 + 뉴턴<small>물1 영역</small></div><div><span class="pill weak">없음</span></div><div><span class="pill weak">부족</span></div></div>
+      <div class="coverage-row"><div class="qnum">4</div><div class="topic">등가원리 / 관성력<small>일반상대성</small></div><div><span class="pill full">충분</span></div><div><span class="pill full">충분</span></div></div>
+      <div class="coverage-row"><div class="qnum">5</div><div class="topic">엘리베이터 관성력<small>일반상대성</small></div><div><span class="pill full">충분</span></div><div><span class="pill full">충분</span></div></div>
+      <div class="coverage-row"><div class="qnum">6</div><div class="topic">운동량 보존<small>물1 고3 기출</small></div><div><span class="pill partial">가볍게</span></div><div><span class="pill weak">거의 없음</span></div></div>
+      <div class="coverage-row"><div class="qnum">7</div><div class="topic">케플러 제2법칙<small>면적속도</small></div><div><span class="pill full">충분</span></div><div><span class="pill full">충분</span></div></div>
+      <div class="coverage-row"><div class="qnum">8</div><div class="topic">케플러 종합<small>만유인력</small></div><div><span class="pill partial">기초만</span></div><div><span class="pill full">충분</span></div></div>
+      <div class="coverage-row"><div class="qnum">9</div><div class="topic">우주속도 + 역학적E<small>EBS 수특</small></div><div><span class="pill full">충분</span></div><div><span class="pill full">충분</span></div></div>
+      <div class="coverage-row"><div class="qnum">10</div><div class="topic">만유인력 응용<small>F-t 그래프</small></div><div><span class="pill weak">없음</span></div><div><span class="pill partial">드묾</span></div></div>
+      <div class="coverage-row"><div class="qnum">11</div><div class="topic">포물선 (변형)<small>평면운동</small></div><div><span class="pill partial">보통</span></div><div><span class="pill full">최다 분량</span></div></div>
+      <div class="coverage-row"><div class="qnum">12</div><div class="topic">원추진자 (기본)<small>원운동</small></div><div><span class="pill full">충분</span></div><div><span class="pill full">매우 많음</span></div></div>
+      <div class="coverage-row"><div class="qnum">13</div><div class="topic">원추진자 (2장력)<small>심화</small></div><div><span class="pill weak">없음</span></div><div><span class="pill partial">적음</span></div></div>
+      <div class="coverage-row"><div class="qnum">14</div><div class="topic">원추진자 + 포물선<small>융합</small></div><div><span class="pill full">충분</span></div><div><span class="pill full">매우 많음</span></div></div>
+      <div class="coverage-row"><div class="qnum">15</div><div class="topic">경사면 + 포물선<small>발사각 성분비</small></div><div><span class="pill partial">보통</span></div><div><span class="pill full">매우 많음</span></div></div>
+      <div class="coverage-row"><div class="qnum">16</div><div class="topic">포물선 + 자유낙하<small>혼합</small></div><div><span class="pill weak">유사 없음</span></div><div><span class="pill full">충분히 포함</span></div></div>
+
+      <div class="coverage-row" style="background: var(--blue-soft);"><div class="qnum sa">서답<br>1</div><div class="topic">관성력+빛 휘어짐<small>일반상대성 / 4점</small></div><div><span class="pill full">충분</span></div><div><span class="pill full">3중 커버</span></div></div>
+      <div class="coverage-row" style="background: var(--blue-soft);"><div class="qnum sa">서답<br>2</div><div class="topic">포물선 + 동시도달<small>4점</small></div><div><span class="pill partial">보통</span></div><div><span class="pill full">마지막날 직접 시행</span></div></div>
+      <div class="coverage-row" style="background: var(--blue-soft);"><div class="qnum sa">서답<br>3</div><div class="topic">원추진자 (장력+수직항력)<small>5점</small></div><div><span class="pill weak">없음</span></div><div><span class="pill weak">매우 드묾</span></div></div>
+      <div class="coverage-row" style="background: var(--blue-soft);"><div class="qnum sa">서답<br>4</div><div class="topic">빗면+도르래+마찰 자유물체도<small>뉴턴 / 7점</small></div><div><span class="pill partial">관련 있음</span></div><div><span class="pill partial">로직 강조</span></div></div>
+      <div class="coverage-row" style="background: var(--blue-soft);"><div class="qnum sa">서답<br>5</div><div class="topic">포물선 에너지 보존 증명<small>5점</small></div><div><span class="pill weak">영과고형</span></div><div><span class="pill full">첫수업 퀴즈</span></div></div>
+      <div class="coverage-row" style="background: var(--blue-soft);"><div class="qnum sa">서답<br>6</div><div class="topic">탈출 속도 유도<small>만유인력 / 5점</small></div><div><span class="pill full">수행평가</span></div><div><span class="pill full">충분</span></div></div>
+    </div>
+
+    <div class="diff-legend" style="margin-top: 14px;">
+      <span><i class="dot" style="background:var(--green)"></i>충분</span>
+      <span><i class="dot" style="background:var(--amber)"></i>보통/일부</span>
+      <span><i class="dot" style="background:var(--red)"></i>부족/없음</span>
+    </div>
+  </section>
+
+  <!-- 4. 총평 및 강사 코멘트 -->
+  <section id="s4">
+    <h2><span class="num">04</span>총평 및 강사 코멘트</h2>
+    <p class="section-sub">22문항 분석에서 도출된 핵심 메시지.</p>
+
+    <div class="insight alert">
+      <div class="insight-title">시험 성격</div>
+      <p>이 시험은 <strong>상위권을 줄 세우려는 의도가 명확</strong>하다. 22문항을 제한된 시간 안에 풀어내야 하므로 단순히 "어려운 문제 몇 개"가 아니라 <strong>전 단원이 빠짐없이 훈련되어 있어야</strong> 한다.</p>
+      <p>"그 정도 공부해서는 부족하다" — 어중간한 학습으로는 상위권 진입이 어려운 시험. 출제자가 변별 의도를 시험지 전체에 걸어두었다.</p>
+    </div>
+
+    <h3>강사 코멘트 — 의미를 두는 부분</h3>
+
+    <div class="quote">
+      포물선 운동, 원추진자 같은 부류는 <strong>다다익선</strong>이다. 많이 경험하고 내공을 올리는 것이 왕도이며, 전략 같은 건 없다.
+      <span class="quote-source">— 단원 학습법</span>
+    </div>
+
+    <div class="quote">
+      서술형을 대비하는 특별한 방식은 없다. 매번 문제 풀 때 <strong>'맥락'이 보이는 전개 과정</strong>을 갖는 것이 중요하지, '문장'을 무엇으로 넣는가는 중요하지 않다.
+      <span class="quote-source">— 서술형 학습법</span>
+    </div>
+
+    <div class="quote">
+      뉴턴 문제 접근은 <strong>'자유물체도 → 성분 분해 → 운동방정식'</strong>. 학생들은 과정이 짧고 간략한 게 좋다고 생각하지만, 공부는 그렇게 하는 것이 아니다.
+      <span class="quote-source">— 풀이 로직</span>
+    </div>
+
+    <div class="quote featured">
+      물리를 잘 한다는 것은 '빨리 푼다 / 맞춘다'에 초점을 두는 것이 아니라, <strong>'왜 인지 남에게 설명할 수 있는가'</strong>이다. 숙제를 하는 동안 한 문제 한 문제 성의있게 하라.
+      <span class="quote-source">— 학습 철학 (최우선 메시지)</span>
+    </div>
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━ PART II ━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <div class="part-divider"><span>PART II — 세부 디테일</span></div>
+
+  <!-- 5. 객관식 세부 -->
+  <section id="s5">
+    <h2><span class="num">05</span>문항별 세부 분석 — 객관식</h2>
+    <p class="section-sub">16문항 전부, 단원·주제·유형·난이도·커버리지·공부 방향 모두 기록.</p>
+
+    <!-- 1번 -->
+    <div class="detail-card safe">
+      <div class="detail-head">
+        <div class="detail-num">1번<small>3.9점</small></div>
+        <div class="detail-tags"><span class="pill diff-h">하</span></div>
+      </div>
+      <div class="detail-topic">중력 렌즈<small>일반 상대성 이론 — 빛의 휘어짐</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>유형</dt><dd>보기형 (ㄱㄴㄷ)</dd>
+          <dt>학교</dt><dd>충분히 다룸 — 학교 프린트에 포함</dd>
+          <dt>우리</dt><dd>충분히 다룸 — 교재에 포함</dd>
+          <dt>강사 평</dt><dd>시험 시작용 가벼운 문항. <strong>반드시 잡아야 할 기본기</strong>. 일반상대론의 가장 기초 개념(시공간 휘어짐, 중력 렌즈)을 묻는 수준.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 2번 -->
+    <div class="detail-card warn">
+      <div class="detail-head">
+        <div class="detail-num">2번<small>4.0점</small></div>
+        <div class="detail-tags"><span class="pill diff-h">하</span></div>
+      </div>
+      <div class="detail-topic">2차원 등가속도 운동<small>평면 운동 — 포물선 운동의 일반화</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>유형</dt><dd>보기형 (ㄱㄴㄷ)</dd>
+          <dt>학교</dt><dd>거의 없음 — 학교 프린트에서 거의 다루지 않은 영역</dd>
+          <dt>우리</dt><dd>충분히 다룸 — 교재에 충분한 분량 존재</dd>
+          <dt>강사 평</dt><dd>물1 1차원 등가속도의 2차원 확장. 학교 수업이 비워둔 영역을 <strong>자체 교재가 메운</strong> 케이스. x, y 성분을 분리해 독립적으로 등가속도 공식 적용.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 3번 -->
+    <div class="detail-card alert">
+      <div class="detail-head">
+        <div class="detail-num">3번<small>4.2점</small></div>
+        <div class="detail-tags"><span class="pill diff-h">하</span></div>
+      </div>
+      <div class="detail-topic">도르래 + 뉴턴 운동 법칙<small>물1 영역 — 연결된 물체의 등가속도</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>유형</dt><dd>보기형 (ㄱㄴㄷ)</dd>
+          <dt>학교</dt><dd>다루지 않음 — 학교는 빗면+마찰 위주, 도르래 유형 없음</dd>
+          <dt>우리</dt><dd>부족 — 도르래 뉴턴은 물1 파트라 충분히 다루지 않음</dd>
+          <dt>난이도</dt><dd>물2 학습자 기준 '하' / 물1 기준 '중'</dd>
+          <dt>강사 평</dt><dd><strong>"물1을 알고 있다고 가정"한 출제 패턴의 첫 신호</strong>. 학교+자체 모두 부족한 영역에서 출제. 물1 도르래는 별도 보강 필요.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 4번 -->
+    <div class="detail-card safe">
+      <div class="detail-head">
+        <div class="detail-num">4번<small>4.0점</small></div>
+        <div class="detail-tags"><span class="pill diff-h">하</span></div>
+      </div>
+      <div class="detail-topic">등가원리 / 관성력<small>일반 상대성 — 가속 우주선 + 빛의 휘어짐</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>유형</dt><dd>보기형 (ㄱㄴㄷ)</dd>
+          <dt>학교</dt><dd>충분히 다룸</dd>
+          <dt>우리</dt><dd>충분히 다룸 — 교재 + 수업 모두</dd>
+          <dt>강사 평</dt><dd>학교+교재+수업 3중 커버된 안정 영역. 단, <strong>학생들이 가장 헷갈려하는 빈출 함정 주제</strong>라 우리 수업에서 시간을 많이 할애했음.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 5번 -->
+    <div class="detail-card safe">
+      <div class="detail-head">
+        <div class="detail-num">5번<small>4.2점</small></div>
+        <div class="detail-tags"><span class="pill diff-h">하</span></div>
+      </div>
+      <div class="detail-topic">엘리베이터 관성력 + F-t 그래프<small>일반 상대성 — 관성력 대표 문제</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>유형</dt><dd>보기형 (ㄱㄴㄷ) + 그래프 해석</dd>
+          <dt>학교</dt><dd>충분히 다룸</dd>
+          <dt>우리</dt><dd>수업 초기부터 열심히 다룬 주제</dd>
+          <dt>강사 평</dt><dd>관성력 단원의 <strong>대표 문제</strong>. 4번(개념형) + 5번(그래프 분석형) 조합으로 같은 주제를 다른 각도에서 출제 — 관성력은 시험의 핵심 영역임을 확인.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 6번 -->
+    <div class="detail-card alert">
+      <div class="detail-head">
+        <div class="detail-num">6번<small>4.4점</small></div>
+        <div class="detail-tags"><span class="pill diff-h">하</span></div>
+      </div>
+      <div class="detail-topic">1차원 운동량 보존<small>물1 고3 기출 대표 문제</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>유형</dt><dd>단답형 (5지선다)</dd>
+          <dt>학교</dt><dd>가볍게만 다룸</dd>
+          <dt>우리</dt><dd>거의 다루지 않음 — 물1 영역</dd>
+          <dt>강사 평</dt><dd>물1을 공부했다면 반드시 만났을 고3 기출 대표 문제. 3번에 이어 <strong>두 번째 "물1 안다고 가정" 출제</strong>. 학교+자체 모두 부족 — 물1 운동량은 별도 보강 영역.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 7번 -->
+    <div class="detail-card safe">
+      <div class="detail-head">
+        <div class="detail-num">7번<small>4.3점</small></div>
+        <div class="detail-tags"><span class="pill diff-h">하</span></div>
+      </div>
+      <div class="detail-topic">케플러 제2법칙 (면적 속도)<small>만유인력 — 케플러 대표 문제</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>유형</dt><dd>단답형 (5지선다, 면적 비율 계산)</dd>
+          <dt>학교</dt><dd>충분히 다룸</dd>
+          <dt>우리</dt><dd>충분한 분량 준비됨</dd>
+          <dt>강사 평</dt><dd>케플러 단원의 가장 대표적인 문제. 같은 시간 동안 쓸고 지나간 면적이 동일하다는 원리 그대로. <strong>계산 실수만 주의</strong>하면 무난.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 8번 -->
+    <div class="detail-card safe">
+      <div class="detail-head">
+        <div class="detail-num">8번<small>4.3점</small></div>
+        <div class="detail-tags"><span class="pill diff-h">하</span></div>
+      </div>
+      <div class="detail-topic">케플러 법칙 종합<small>만유인력 — 가속도 / 운동에너지 / 주기-반지름</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>유형</dt><dd>보기형 (ㄱㄴㄷ)</dd>
+          <dt>학교</dt><dd>난이도 낮아 비중 두지 않음 (기초)</dd>
+          <dt>우리</dt><dd>교재에 비슷한 유형 다수 수록</dd>
+          <dt>강사 평</dt><dd>케플러 3법칙을 한 문항에 종합한 대표 유형. 우리 교재에 유사 유형이 풍부 — <strong>교재 충실히 풀었다면 무난</strong>.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 9번 -->
+    <div class="detail-card safe">
+      <div class="detail-head">
+        <div class="detail-num">9번<small>4.6점</small></div>
+        <div class="detail-tags"><span class="pill diff-m">중</span></div>
+      </div>
+      <div class="detail-topic">우주속도 + 역학적 에너지 보존<small>만유인력 / 역학적 에너지</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>유형</dt><dd>보기형 (ㄱㄴㄷ)</dd>
+          <dt>학교</dt><dd>충분히 다룸 (탈출 속도)</dd>
+          <dt>우리</dt><dd>충분히 다룸 + EBS 수능특강 활용</dd>
+          <dt>강사 평</dt><dd>우주속도(개념) + 역학적 에너지(계산) 융합형. 최대 도달 높이는 <strong>물1 에너지 보존 수준의 응용</strong>. EBS 수능특강에서 다루는 영역으로 자체 교재로 충분히 대비됨.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 10번 -->
+    <div class="detail-card warn">
+      <div class="detail-head">
+        <div class="detail-num">10번<small>4.6점</small></div>
+        <div class="detail-tags"><span class="pill diff-m">중</span></div>
+      </div>
+      <div class="detail-topic">만유인력 응용 (F-t 그래프 → 거리)<small>만유인력</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>유형</dt><dd>단답형 (5지선다)</dd>
+          <dt>학교</dt><dd>없음</dd>
+          <dt>우리</dt><dd>드묾</dd>
+          <dt>난이도</dt><dd>유형 익숙도 기준 '중' / 논리 자체는 '하'</dd>
+          <dt>강사 평</dt><dd>F = GMm/r² 공식만 체화되어 있으면 접근 가능. 익숙하지 않은 유형이라 체감이 어려울 뿐 본질은 기본. <strong>"공식을 외워서 푸는 공부가 아닌, 공식을 도출하는 과정이 반드시 필요하다"</strong>는 메시지를 던지는 문항.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 11번 -->
+    <div class="detail-card warn">
+      <div class="detail-head">
+        <div class="detail-num">11번<small>4.4점</small></div>
+        <div class="detail-tags"><span class="pill diff-m">중</span></div>
+      </div>
+      <div class="detail-topic">포물선 운동 (변형)<small>평면 운동 — 비스듬 발사 + 최고점 수직 도달</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>유형</dt><dd>보기형 (ㄱㄴㄷ)</dd>
+          <dt>학교</dt><dd>일반적 분량</dd>
+          <dt>우리</dt><dd>수업 시간/교재 분량 모두 최다</dd>
+          <dt>강사 평</dt><dd>포물선은 유형 분류 자체가 무의미할 만큼 변형이 다양함. 우리 수업에서 가장 많은 시간을 할애했고, 교재에서도 가장 큰 비중. <strong>"포물선에 난이도 하는 없다 — 다다익선이 답"</strong>.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 12번 -->
+    <div class="detail-card safe">
+      <div class="detail-head">
+        <div class="detail-num">12번<small>4.3점</small></div>
+        <div class="detail-tags"><span class="pill diff-h">하</span></div>
+      </div>
+      <div class="detail-topic">원추진자 (기본형)<small>원운동 — 원뿔 내면 등속 원운동</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>유형</dt><dd>보기형 (ㄱㄴㄷ)</dd>
+          <dt>학교</dt><dd>충분히 다룸</dd>
+          <dt>우리</dt><dd>매우 많이 다룸</dd>
+          <dt>난이도</dt><dd>학습 노출 기준 '하' / 문제 자체 독립 난이도는 '중'</dd>
+          <dt>강사 평</dt><dd>원추진자는 접근 방식이 정해진 유형 — <strong>성분별 운동방정식 + 속력·주기 공식</strong> 프레임 안에서 모두 해결됨. 반복 학습으로 정형화된 풀이가 가능. 반드시 맞혀야 할 문항.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 13번 -->
+    <div class="detail-card alert">
+      <div class="detail-head">
+        <div class="detail-num">13번<small>4.6점</small></div>
+        <div class="detail-tags"><span class="pill diff-s">상</span></div>
+      </div>
+      <div class="detail-topic">원추진자 (2장력) — 업그레이드 버전<small>원운동 — 두 개의 장력 동시 작용</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>유형</dt><dd>단답형 (주기 계산)</dd>
+          <dt>학교</dt><dd>다룬 적 없음</dd>
+          <dt>우리</dt><dd>분량 적음 (단, 수업 후반부에 다룸)</dd>
+          <dt>강사 평</dt><dd><strong>객관식에서 유일한 '상' 난이도</strong>. 원추진자 기본 프레임은 동일하나 장력이 두 개로 늘어나 미지수 증가. 노출이 제한된 영역으로 변별의 핵심 지점.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 14번 -->
+    <div class="detail-card safe">
+      <div class="detail-head">
+        <div class="detail-num">14번<small>4.7점</small></div>
+        <div class="detail-tags"><span class="pill diff-m">중</span></div>
+      </div>
+      <div class="detail-topic">원추진자 + 포물선 (융합)<small>원운동 → 실 끊김 → 포물선 → 동시 도달</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>유형</dt><dd>단답형 (속력 계산)</dd>
+          <dt>학교</dt><dd>충분히 다룸</dd>
+          <dt>우리</dt><dd>교재에 매우 많은 유형</dd>
+          <dt>강사 평</dt><dd>원추진자의 대표 융합 유형. 두 단계(원운동 → 포물선) 모두 노출이 충분 — <strong>숙제를 성실히 했다면 여러 번 만났을 유형</strong>이라 고배점이지만 잡아야 할 점수.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 15번 -->
+    <div class="detail-card safe">
+      <div class="detail-head">
+        <div class="detail-num">15번<small>4.7점</small></div>
+        <div class="detail-tags"><span class="pill diff-m">중</span></div>
+      </div>
+      <div class="detail-topic">경사면 + 포물선 — 발사각 성분비<small>평면 운동 — tanθ 도출</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>유형</dt><dd>단답형 (5지선다)</dd>
+          <dt>학교</dt><dd>일반적 분량</dd>
+          <dt>우리</dt><dd>매우 많은 파트 차지</dd>
+          <dt>강사 평</dt><dd>발사각도의 성분비를 묻는 변형. 우리 교재에서 큰 비중을 차지하는 유형. <strong>"제발 숙제를 열심히 많이 하라"</strong>는 메시지 그대로.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 16번 -->
+    <div class="detail-card warn">
+      <div class="detail-head">
+        <div class="detail-num">16번<small>4.8점 ⭐</small></div>
+        <div class="detail-tags"><span class="pill diff-m">중</span></div>
+      </div>
+      <div class="detail-topic">포물선 + 자유낙하 혼합<small>평면 운동 — 동시 도달 조건</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>유형</dt><dd>보기형 (ㄱㄴㄷ)</dd>
+          <dt>학교</dt><dd>똑같은 유형은 다룬 적 없음</dd>
+          <dt>우리</dt><dd>교재 포물선 분량이 워낙 많아 충분히 포함된 유형</dd>
+          <dt>강사 평</dt><dd><strong>객관식 최고 배점(4.8점)</strong>. 학교에 똑같은 유형은 없으나 자체 교재의 포물선 분량으로 충분히 대비됨. 시간 제한 안에 풀어내려면 <strong>포물선 풀이가 자동화</strong>되어 있어야 가능.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 서답형 세부 -->
+  <section id="s6">
+    <h2><span class="num">06</span>문항별 세부 분석 — 서답형</h2>
+    <p class="section-sub">서답형 6문항 = 30점. 변별의 핵심 영역.</p>
+
+    <!-- 서답형 1 -->
+    <div class="detail-card special">
+      <div class="detail-head">
+        <div class="detail-num">서답형 1<small>4점</small></div>
+        <div class="detail-tags"><span class="pill diff-h">하</span><span class="sa-tag">서답</span></div>
+      </div>
+      <div class="detail-topic">관성력 + 빛의 휘어짐<small>일반 상대성 — 등가원리 응용 / (1) 저울 측정값 / (2) 빛 경로 길이 비교</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>배점</dt><dd>(1) 2점 [이유 1점 + 답 1점] / (2) 2점 [이유 1점 + 답 1점]</dd>
+          <dt>학교</dt><dd>충분히 다룸</dd>
+          <dt>우리</dt><dd>3중 커버 (직전 수업 + 이론 수업 + 교재)</dd>
+          <dt>강사 평</dt><dd>관성력은 우리 수업에서 충분히 다뤘고, 빛의 휘어짐은 직전 수업·이론 수업·교재에 모두 등장. <strong>그림을 여러 번 그려본 학생이라면 서술이 가능</strong>. 서답형 중 가장 안전한 점수원.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 서답형 2 -->
+    <div class="detail-card special">
+      <div class="detail-head">
+        <div class="detail-num">서답형 2<small>4점</small></div>
+        <div class="detail-tags"><span class="pill diff-m">중</span><span class="sa-tag">서답</span></div>
+      </div>
+      <div class="detail-topic">포물선 운동 - 자유낙하(A) + 비스듬 발사(B) 동시 도달<small>평면 운동 — r에서 두 속도 수직 조건</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>배점</dt><dd>4점 [풀이 3점 + 답 1점] — 풀이 비중 75%</dd>
+          <dt>학교</dt><dd>일반적 분량</dd>
+          <dt>우리</dt><dd>마지막날 서술형 직접 시행</dd>
+          <dt>강사 평</dt><dd>객관식이라면 '중'이지만 풀이 비중이 75%라 서술 압박이 크다. <strong>객관식만 공부한 학생은 식만 세우면 답에는 도달하지만 풀이 점수에서 잃는 구조</strong>. 서술형 연습 부족이 곧 감점.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 서답형 3 -->
+    <div class="detail-card alert">
+      <div class="detail-head">
+        <div class="detail-num">서답형 3<small>5점</small></div>
+        <div class="detail-tags"><span class="pill diff-s">상</span><span class="sa-tag">서답</span></div>
+      </div>
+      <div class="detail-topic">원추진자 (장력 + 수직항력)<small>원운동 — 원뿔 외면 / (1) 구심력 / (2) 속력</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>배점</dt><dd>(1) 2점 [풀이 1점 + 답 1점] / (2) 3점 [풀이 2점 + 답 1점]</dd>
+          <dt>학교</dt><dd>다루지 않음</dd>
+          <dt>우리</dt><dd>매우 드묾 (보통의 물2 문제도 거의 없음)</dd>
+          <dt>강사 평</dt><dd>원추진자 업그레이드 버전. 보통 수직항력 단독 또는 장력 단독인데 이 유형은 <strong>두 힘 모두 고려한 운동방정식</strong>이 필요. <strong>'자유물체도 → 성분 분해 → 운동방정식'</strong> 로직이 훈련되어 있어야 풀 수 있음. 출제 의도는 단답형 답 도달 — 풀이 점수 부담은 적음.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 서답형 4 -->
+    <div class="detail-card alert">
+      <div class="detail-head">
+        <div class="detail-num">서답형 4<small>7점 ⭐ 단일 최고</small></div>
+        <div class="detail-tags"><span class="pill diff-s">상</span><span class="sa-tag">서답</span></div>
+      </div>
+      <div class="detail-topic">빗면 + 도르래 + 마찰력 (자유물체도 작성)<small>뉴턴 — 운동 방향에 따른 마찰력 방향</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>배점</dt><dd>총 7점 — 단일 문항 최고 배점</dd>
+          <dt>학교</dt><dd>관련 빗면 마찰 수업 있음</dd>
+          <dt>우리</dt><dd>3단계 로직 강조</dd>
+          <dt>강사 평</dt><dd><strong>출제자의 색깔이 가장 뚜렷한 문항</strong>. 자유물체도 자체를 직접 평가 — 출제자가 학생에게 던지는 메시지: "공부는 이렇게 하는 것이다." <strong>강사의 교육 철학과 정확히 일치</strong>하는 출제. 평소 우리 수업의 자유물체도 + 성분분해 + 운동방정식 로직을 따른 학생에게 유리.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 서답형 5 -->
+    <div class="detail-card alert">
+      <div class="detail-head">
+        <div class="detail-num">서답형 5<small>5점</small></div>
+        <div class="detail-tags"><span class="pill diff-s">상</span><span class="sa-tag">서답</span></div>
+      </div>
+      <div class="detail-topic">포물선 운동에서 역학적 에너지 = ½mv₀² 일정함을 증명<small>평면 운동 + 에너지 보존 — 단계별 유도</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>배점</dt><dd>(1) 위치 1점 / (2) 속도 1점 / (3) 에너지 도출 + 증명 3점</dd>
+          <dt>학교</dt><dd>일반 자사고에서 거의 없는 영과고 스타일</dd>
+          <dt>우리</dt><dd>시험대비 첫 수업 퀴즈에 출제했던 유형</dd>
+          <dt>강사 평</dt><dd><strong>"진선여고는 영과고 스타일 출제"</strong>를 명확히 보여주는 문항. 진선여고 시험에는 이런 유도/증명이 두 번이나 들어감. 강사가 과고 내신 수업을 하기에 이론 파트에서 충분히 다룬 유형. <strong>과정은 쉬운데 써본 사람만이 시간 안에 작성 가능 — 직접 손으로 써본 경험이 곧 점수</strong>.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 서답형 6 -->
+    <div class="detail-card safe">
+      <div class="detail-head">
+        <div class="detail-num">서답형 6<small>5점 🎁</small></div>
+        <div class="detail-tags"><span class="pill diff-h">하</span><span class="sa-tag">서답</span></div>
+      </div>
+      <div class="detail-topic">탈출 속도 단계별 유도<small>만유인력 — (1) E_p(r) / (2) 역학적E / (3) v_e</small></div>
+      <div class="detail-body">
+        <dl>
+          <dt>배점</dt><dd>(1) 2점 / (2) 1점 / (3) 2점</dd>
+          <dt>학교</dt><dd>수행평가에서 유사 문제 다룸</dd>
+          <dt>우리</dt><dd>충분히 다룸</dd>
+          <dt>강사 평</dt><dd>탈출 속도 유도의 기본형. <strong>학교에서 배운 그대로 쓰면 만점 — 서비스 문제</strong>. 평소 학교 수업과 수행평가를 충실히 이수했다면 5점이 보장됨. 등급 안정에 결정적.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━ PART III ━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <div class="part-divider"><span>PART III — 대비 방향과 강사의 강점</span></div>
+
+  <!-- 7. 준비했어야 할 방향 -->
+  <section id="s7">
+    <h2><span class="num">07</span>준비했어야 할 방향</h2>
+    <p class="section-sub">이 시험이 요구한 학습 방향.</p>
+
+    <div class="strategy">
+      <div class="strategy-title">전 단원 빠짐없는 훈련</div>
+      <ul>
+        <li>출제는 6개 단원 <strong>전 영역</strong>에서 빠짐없이 이루어짐</li>
+        <li>한 단원만 약해도 시간을 잃고 후반부 변별 문항에 도달 못함</li>
+        <li>"잘하는 단원으로 부족한 단원을 메운다"는 전략은 통하지 않음</li>
+      </ul>
+    </div>
+
+    <div class="strategy">
+      <div class="strategy-title">포물선 · 원추진자는 다다익선</div>
+      <ul>
+        <li>두 단원 합쳐 <strong>10문항(45%)</strong></li>
+        <li>유형이 다양해 분류·전략은 의미 없음</li>
+        <li><strong>경험량 = 실력</strong>. 많이 풀어 내공을 올리는 것이 왕도</li>
+      </ul>
+    </div>
+
+    <div class="strategy">
+      <div class="strategy-title">물1 선행이 필수</div>
+      <ul>
+        <li>3·6·10번이 "물1 안다고 가정" 패턴</li>
+        <li>도르래 / 운동량 / 만유인력 응용은 학교+자체 모두 부족 영역</li>
+        <li>물1 기초가 약하면 객관식에서부터 점수가 새기 시작</li>
+      </ul>
+    </div>
+
+    <div class="strategy">
+      <div class="strategy-title">서술형은 평소 풀이 습관</div>
+      <ul>
+        <li>특별한 대비법은 없음</li>
+        <li>매번 문제 풀 때 <strong>'맥락이 보이는 전개 과정'</strong>을 갖추는 것이 전부</li>
+        <li>'문장으로 무엇을 쓸지'가 아니라 '식과 식 사이에 논리가 있는가'</li>
+      </ul>
+    </div>
+
+    <div class="strategy">
+      <div class="strategy-title">시간 확보 능력</div>
+      <ul>
+        <li>22문항 + 서답형 6문항 = 빠르게 풀어내야 변별 문항에 손이 감</li>
+        <li>평이한 문항을 자동화 수준으로 만들어둘 것</li>
+        <li>속도가 곧 점수</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 8. 적중도 -->
+  <section id="s8">
+    <h2><span class="num">08</span>우리 수업의 적중도</h2>
+    <p class="section-sub">강사의 준비가 시험 출제 의도와 얼마나 부합하는가.</p>
+
+    <div class="match-table">
+      <div class="match-row">
+        <div class="label">단원 비중</div>
+        <div class="value">우리 수업이 가장 많은 시간을 할애한 <strong>포물선 단원이 시험 최다 출제(6문항)</strong>. 두 번째로 많이 다룬 원추진자가 4문항. <span class="b-ink">상위 두 단원에서 우리 수업 비중과 출제 비중이 정확히 일치.</span></div>
+      </div>
+      <div class="match-row">
+        <div class="label">서답형 유형</div>
+        <div class="value">시험 직전 마지막 수업에서 <strong>서답형 쓰기 직접 시행</strong>. 시험대비 첫 수업 퀴즈에 <strong>"포물선 에너지 보존 증명"</strong>을 출제했고 그것이 <strong>서답형 5로 그대로 등장</strong>.</div>
+      </div>
+      <div class="match-row">
+        <div class="label">학습 로직</div>
+        <div class="value">강사가 강조한 <strong>"자유물체도 → 성분분해 → 운동방정식"</strong> 로직이 서답형 4에서 평가의 핵심으로 등장 — 출제자의 색깔과 강사의 색깔이 정확히 일치.</div>
+      </div>
+      <div class="match-row">
+        <div class="label">출제 스타일</div>
+        <div class="value">진선여고는 <strong>영과고 스타일(유도·증명형)</strong> 출제. 강사가 <strong>과고 내신 수업</strong>을 진행하기에 이런 유형이 우리 수업의 기본값. 일반 학원에서는 다루지 않는 영역.</div>
+      </div>
+      <div class="match-row">
+        <div class="label">EBS 활용</div>
+        <div class="value">9번(우주속도)이 EBS 수능특강 영역에서 출제 — 우리 교재가 EBS를 다루고 있어 자연스럽게 대비됨.</div>
+      </div>
+      <div class="match-row">
+        <div class="label">미충족 영역</div>
+        <div class="value">3·6번(<strong>물1 도르래·운동량</strong>)은 우리 수업에서도 충분히 다루지 않음. 학생의 물1 선행 학습 여부에 따라 점수 차이가 발생.</div>
+      </div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-title">종합 적중도</div>
+      <p>출제 단원 분포·서답형 유형·평가 철학·학습 로직 모두에서 <strong>우리 수업의 방향이 시험 출제 의도와 부합</strong>. 특히 강사가 시험 직전 퀴즈에 출제한 유형이 본 시험에 등장한 점에서 <strong>출제 경향에 대한 정확한 판독 능력</strong>이 입증됨.</p>
+    </div>
+  </section>
+
+  <!-- 9. 학생이 갖춰야 할 역량 -->
+  <section id="s9">
+    <h2><span class="num">09</span>학생이 갖춰야 할 역량</h2>
+    <p class="section-sub">이 시험을 뚫어내는 데 필요한 능력.</p>
+
+    <div class="strategy">
+      <div class="strategy-title">속도 — 시간 안에 풀어내는 능력</div>
+      <ul>
+        <li>22문항을 시간 내 처리할 수 있는 <strong>풀이 자동화</strong></li>
+        <li>평이한 문항에서 시간을 아껴 변별 문항에 투자</li>
+      </ul>
+    </div>
+
+    <div class="strategy">
+      <div class="strategy-title">전 단원 균형</div>
+      <ul>
+        <li>약한 단원이 단 하나만 있어도 시험 전체가 흔들림</li>
+        <li>한 단원에 깊이 빠지기보다 <strong>전 영역의 균형</strong>이 우선</li>
+      </ul>
+    </div>
+
+    <div class="strategy">
+      <div class="strategy-title">로직 훈련</div>
+      <ul>
+        <li>뉴턴: 자유물체도 → 성분분해 → 운동방정식</li>
+        <li>원운동: 성분별 운동방정식 → 속력·주기 도출</li>
+        <li>포물선: x, y 성분 분리 → 독립 분석</li>
+        <li>각 단원의 <strong>표준 풀이 프레임을 체화</strong></li>
+      </ul>
+    </div>
+
+    <div class="strategy">
+      <div class="strategy-title">서술 능력</div>
+      <ul>
+        <li>맥락이 보이는 전개 과정 — 식 → 답 → 포인트만 한 줄</li>
+        <li>'문장 잘 쓰기'가 아니라 <strong>'논리 잘 쓰기'</strong></li>
+        <li>평소 숙제부터 풀이를 또박또박 정리하는 습관</li>
+      </ul>
+    </div>
+
+    <div class="strategy">
+      <div class="strategy-title">유도·증명 경험</div>
+      <ul>
+        <li>영과고 스타일 시험 — 결과식 암기로는 불가능</li>
+        <li>이론 단계의 유도 과정을 직접 손으로 써봤어야 시간 안에 재현 가능</li>
+        <li><strong>"써본 사람에게는 쉬운 문제, 안 써본 사람에게는 포기할 문제"</strong></li>
+      </ul>
+    </div>
+
+    <div class="strategy">
+      <div class="strategy-title">설명할 수 있는 이해</div>
+      <ul>
+        <li>"왜 이 식이 등장했는가"를 남에게 설명할 수 있는 수준</li>
+        <li>한 문제 한 문제 성의있게 — 그게 곧 실력</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 10. 강사의 강점 -->
+  <section id="s10">
+    <div class="strength">
+      <div class="strength-tag">강사의 강점</div>
+      <h3>왜 이 분석이 신뢰할 만한가</h3>
+
+      <div class="strength-list">
+        <div class="strength-item">
+          <div class="strength-item-title">고려대학교 일반물리학 채점 경력</div>
+          <div class="strength-item-body">대학 일반물리학 <strong>채점기준 및 모범답안 제작 경험</strong> 보유. 서술형 답안 평가 기준을 직접 만들어본 사람으로서, 풀이의 논리·생략 가능 여부·감점 포인트를 정확히 짚어낼 수 있다.</div>
+        </div>
+
+        <div class="strength-item">
+          <div class="strength-item-title">과고 내신 수업 전문</div>
+          <div class="strength-item-body">진선여고 시험은 <strong>영과고 스타일(유도·증명형)</strong>로 출제됨. 강사는 본래 <strong>과고 내신 수업</strong>을 진행하므로 유도·증명·로직 강조가 수업의 기본값. 일반 자사고를 대상으로 하는 다른 강사들이 다루지 않는 영역을 일상적으로 다룬다.</div>
+        </div>
+
+        <div class="strength-item">
+          <div class="strength-item-title">출제 경향 판독력</div>
+          <div class="strength-item-body">시험대비 <strong>첫 수업 퀴즈에 "포물선 에너지 보존 증명"</strong>을 출제 → 본 시험 서답형 5에 동일 유형 등장. <strong>마지막 수업에 서답형 쓰기 직접 시행</strong> → 본 시험 서답형 6문항 출제. 출제 경향을 미리 읽어내고 그에 맞게 수업을 설계한다.</div>
+        </div>
+
+        <div class="strength-item">
+          <div class="strength-item-title">출제자의 색깔과 일치하는 교육 철학</div>
+          <div class="strength-item-body">서답형 4(자유물체도 작성)는 <strong>출제자가 직접 평가하는 학습 로직</strong>이며, 그것은 강사가 평소 강조하는 <strong>"자유물체도 → 성분분해 → 운동방정식"</strong>과 정확히 일치. 출제자와 강사가 같은 가치관을 공유한다는 것은 우연이 아니다.</div>
+        </div>
+
+        <div class="strength-item">
+          <div class="strength-item-title">학생을 단기 점수가 아닌 '실력'으로 끌어올림</div>
+          <div class="strength-item-body">"빨리 푼다 / 맞춘다"가 아니라 <strong>"왜인지 남에게 설명할 수 있는가"</strong>를 평가 기준으로 삼는다. 진선여고처럼 상위권 줄세우기가 명확한 시험에서는, 결국 이 능력을 갖춘 학생만이 변별 문항을 뚫어낸다. 단기 처방이 아닌 <strong>장기적으로 진짜 실력을 만드는 수업</strong>.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="verdict">
+      <h3>최종 결론</h3>
+      <div class="verdict-row"><span><strong>학생 체감 난이도는 '상'.</strong> 문항 수와 시간 제한이 만든 압박. 전 단원이 훈련되고 빠르게 풀어야 변별 문항까지 도달.</span></div>
+      <div class="verdict-row"><span><strong>상위권 줄세우기가 명확한 시험.</strong> "그 정도 공부해서는 부족하다"는 출제자의 메시지. 어중간한 학습으로는 상위권 진입이 어려움.</span></div>
+      <div class="verdict-row"><span><strong>서답형 30점이 등급을 가른다.</strong> 그중 17점이 '상'. 객관식보다 서술 대비가 결정적.</span></div>
+      <div class="verdict-row"><span><strong>출제 경향과 우리 수업이 부합.</strong> 단원 비중·서답형 유형·평가 철학 모두 일치. 우리가 준비한 방향이 옳았다.</span></div>
+      <div class="verdict-row"><span><strong>전략 따위는 없다.</strong> 다다익선의 경험과 한 문제 한 문제 성의 — 그게 답이다.</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Jinseon Midterm Analysis · Final Report</p>
+    <p>객관식 16 · 서답형 6 · 22문항 완전 분석</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
