@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>대찬학원 · 진선여고 역학과에너지 기말고사</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Pretendard:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-elev: #131313;
+    --bg-card: #181818;
+    --line: #262626;
+    --line-soft: #1f1f1f;
+    --ink: #f5f5f4;
+    --ink-soft: #a8a29e;
+    --ink-mute: #78716c;
+    --accent: #fbbf24;
+    --accent-soft: #fbbf2422;
+    --danger: #f87171;
+    --danger-soft: #f8717122;
+    --good: #86efac;
+    --display: 'Fraunces', 'Pretendard', serif;
+    --body: 'Pretendard', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.65;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .page {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+  }
+
+  /* Grain overlay */
+  .page::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 32px 24px 40px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -80px;
+    width: 240px;
+    height: 240px;
+    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .brand-dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--accent);
+  }
+  .tagline-top {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .tagline-main {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin-bottom: 24px;
+  }
+  .tagline-main em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .school-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-family: var(--mono);
+  }
+  .school-meta strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* SECTION */
+  section {
+    padding: 48px 24px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .sec-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.2em;
+    margin-bottom: 12px;
+  }
+  .sec-title {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-bottom: 28px;
+  }
+  .sec-title .accent {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* CURRICULUM TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 24px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent) 0%, var(--line) 60%);
+  }
+  .lesson {
+    position: relative;
+    padding-bottom: 28px;
+  }
+  .lesson:last-child { padding-bottom: 0; }
+  .lesson::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 6px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+  .lesson.theory::before {
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+  }
+  .lesson-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .lesson-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: -0.02em;
+  }
+  .lesson-desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .lesson-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 3px 8px;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+  }
+  .tag.theory { color: var(--accent); border-color: var(--accent-soft); }
+
+  .divider-note {
+    margin-top: 24px;
+    padding: 14px 16px;
+    background: var(--bg-elev);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .divider-note strong { color: var(--ink); }
+
+  /* MATERIALS */
+  .materials {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .mat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 18px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .mat-card:hover { border-color: var(--accent-soft); }
+  .mat-num {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--accent);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 28px;
+    padding-top: 2px;
+  }
+  .mat-body h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    letter-spacing: -0.015em;
+  }
+  .mat-body p {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* WORKFLOW */
+  .workflow {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 20px;
+  }
+  .wf-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-mute);
+    margin-bottom: 14px;
+  }
+  .wf-flow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .wf-step {
+    flex: 1;
+    text-align: center;
+    padding: 10px 6px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+  .wf-arrow {
+    color: var(--accent);
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .bonus-note {
+    margin-top: 20px;
+    padding: 16px;
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  .bonus-note strong { color: var(--ink); font-weight: 600; }
+
+  /* FOCUS - 특화 포인트 */
+  .focus-intro {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    padding: 14px 16px;
+    background: var(--accent-soft);
+    border-radius: 8px;
+    border-left: 2px solid var(--accent);
+  }
+  .focus-intro strong { color: var(--accent); }
+
+  .focus-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .focus-item {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .focus-head {
+    padding: 16px 18px 12px;
+    border-bottom: 1px solid var(--line-soft);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .focus-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 3px 8px;
+    background: var(--bg);
+    border-radius: 4px;
+    color: var(--ink-soft);
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+  }
+  .focus-title {
+    font-size: 15.5px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+  }
+  .focus-body {
+    padding: 14px 18px 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.75;
+  }
+  .focus-body strong { color: var(--ink); font-weight: 600; }
+  .focus-body .hl { color: var(--accent); font-weight: 600; }
+
+  .focus-item.kill {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent-soft), 0 8px 32px rgba(251, 191, 36, 0.08);
+  }
+  .focus-item.kill .focus-head {
+    background: linear-gradient(135deg, var(--accent-soft) 0%, transparent 60%);
+  }
+  .focus-item.kill .focus-tag {
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: 700;
+  }
+
+  /* CLOSING */
+  .closing {
+    text-align: center;
+    padding: 56px 24px 64px;
+    border-bottom: none;
+  }
+  .closing-quote {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .closing-mark {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: -0.03em;
+  }
+  .closing-mark em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .closing-meta {
+    margin-top: 32px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+  }
+
+  /* fade-in */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  section, .hero > * {
+    animation: fadeUp 0.7s ease-out backwards;
+  }
+  .hero > *:nth-child(1) { animation-delay: 0.05s; }
+  .hero > *:nth-child(2) { animation-delay: 0.15s; }
+  .hero > *:nth-child(3) { animation-delay: 0.25s; }
+  .hero > *:nth-child(4) { animation-delay: 0.35s; }
+
+  @media (max-width: 380px) {
+    .tagline-main { font-size: 32px; }
+    .sec-title { font-size: 24px; }
+    .wf-step { font-size: 11px; padding: 8px 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="brand-row">
+      <span class="brand-dot"></span>
+      <span>대찬학원 · 진선여고</span>
+    </div>
+    <p class="tagline-top">물리는 최성훈</p>
+    <h1 class="tagline-main">클라스가 <em>다르다</em>.</h1>
+    <div class="school-meta">
+      <strong>역학과에너지</strong>
+      <span>·</span>
+      <span>기말고사 대비</span>
+    </div>
+  </header>
+
+  <!-- 커리큘럼 -->
+  <section>
+    <div class="sec-num">01 · CURRICULUM</div>
+    <h2 class="sec-title">강의 <span class="accent">로드맵</span></h2>
+
+    <div class="timeline">
+      <div class="lesson theory">
+        <div class="lesson-num">WEEK 01</div>
+        <div class="lesson-title">열역학과 엔트로피</div>
+        <div class="lesson-desc">이론수업 · 이론퀴즈로 개념 점검</div>
+        <div class="lesson-tags">
+          <span class="tag theory">이론</span>
+          <span class="tag theory">퀴즈</span>
+        </div>
+      </div>
+
+      <div class="lesson theory">
+        <div class="lesson-num">WEEK 02</div>
+        <div class="lesson-title">탄성파와 도플러</div>
+        <div class="lesson-desc">이론수업 · 이론퀴즈로 개념 점검</div>
+        <div class="lesson-tags">
+          <span class="tag theory">이론</span>
+          <span class="tag theory">퀴즈</span>
+        </div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-num">WEEK 03 →</div>
+        <div class="lesson-title">문제풀이 본격 진입</div>
+        <div class="lesson-desc">이론은 2강에서 마무리. 이후로는 실전 문풀과 질문풀이가 이어집니다.</div>
+        <div class="lesson-tags">
+          <span class="tag">문풀</span>
+          <span class="tag">질문풀이</span>
+          <span class="tag">서술형</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider-note">
+      <strong>2강까지 모든 이론수업은 종료됩니다.</strong> 이후는 실전 문제풀이 중심으로 진행됩니다.
+    </div>
+  </section>
+
+  <!-- 사용 교재 -->
+  <section>
+    <div class="sec-num">02 · MATERIALS</div>
+    <h2 class="sec-title">우리가 풀 <span class="accent">문제들</span></h2>
+
+    <div class="materials">
+      <div class="mat-card">
+        <div class="mat-num">01</div>
+        <div class="mat-body">
+          <h4>교과서 2권</h4>
+          <p>현행 교육과정 교과서 두 권의 문항을 모두 다룹니다.</p>
+        </div>
+      </div>
+      <div class="mat-card">
+        <div class="mat-num">02</div>
+        <div class="mat-body">
+          <h4>구 물리학Ⅱ 평가원·수능 기출</h4>
+          <p>개정 전 물리학Ⅱ에서 해당 주제의 평가원·수능 기출. 난이도 상·중·하 골고루 편성.</p>
+        </div>
+      </div>
+      <div class="mat-card">
+        <div class="mat-num">03</div>
+        <div class="mat-body">
+          <h4>구 물리학Ⅱ EBS 2점·3점</h4>
+          <p>관련 주제의 EBS 문항. 정상파 등 EBS 단골 출제 영역까지 커버합니다.</p>
+        </div>
+      </div>
+      <div class="mat-card">
+        <div class="mat-num">04</div>
+        <div class="mat-body">
+          <h4>서술형 변형 대표문제</h4>
+          <p>서술형 출제에 대비해 변형 준비된 대표문제들. 풀이 과정을 글로 다듬는 훈련 포함.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bonus-note">
+      <strong>+ 물리Ⅰ 보강도 함께</strong><br>
+      해당 주제에 대해 물리Ⅰ 공부가 필요하면 그 부분도 충분히 다룹니다. 특히 열역학Ⅰ법칙·파동 영역은 물1 내용이 깊게 들어와 있어 별도 보강이 필수입니다.
+    </div>
+  </section>
+
+  <!-- 운영 방식 -->
+  <section>
+    <div class="sec-num">03 · WORKFLOW</div>
+    <h2 class="sec-title">수업 <span class="accent">운영 방식</span></h2>
+
+    <div class="workflow">
+      <div class="wf-title">— WEEKLY CYCLE</div>
+      <div class="wf-flow">
+        <div class="wf-step">숙제<br>사전 배포</div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-step">학생<br>풀이</div>
+        <div class="wf-arrow">→</div>
+        <div class="wf-step">질문문제<br>수업 풀이</div>
+      </div>
+    </div>
+
+    <div class="bonus-note" style="margin-top: 16px;">
+      숙제는 매주 미리 배포됩니다. 학생이 먼저 풀어오고, 다음 시간에 막혔던 <strong>질문문제 위주로 풀이</strong>하는 형태로 진행됩니다.
+    </div>
+  </section>
+
+  <!-- 기말고사 대비 특화 포인트 -->
+  <section>
+    <div class="sec-num">04 · STRATEGY</div>
+    <h2 class="sec-title">기말고사 대비<br><span class="accent">특화 포인트</span></h2>
+
+    <div class="focus-intro">
+      <strong>핵심 전략 —</strong> 범위 전체를 골고루 공부하되, 학교 프린트의 색깔을 먼저 파악하는 것이 1순위입니다. 이번 기말 범위에는 <strong>구 물리Ⅰ 영역이 비중 있게</strong> 들어옵니다.
+    </div>
+
+    <div class="focus-list">
+
+      <div class="focus-item">
+        <div class="focus-head">
+          <span class="focus-tag">01</span>
+          <div class="focus-title">열역학 1법칙 — 물1 색깔이 강하다</div>
+        </div>
+        <div class="focus-body">
+          열역학 1법칙은 <strong>물리학Ⅰ 내용</strong>이 많습니다. 개정 전 물리학Ⅱ에서 열역학은 <strong>열역학적 에너지 보존</strong> 위주였는데, 이번 학교 프린트가 <strong>구 물1 색깔</strong>인지 <strong>구 물2 색깔</strong>인지부터 판별하고 물량을 준비해야 합니다.<br><br>
+          개정 전 물1 열역학과 물2 열역학은 <strong>색깔이 명확히 다릅니다.</strong> 개정 후에는 물1 열역학이 그대로 이전된 양상이지만, <span class="hl">학교 교사의 의향을 파악한 뒤 물량을 덤비는 것이 안전</span>합니다.
+        </div>
+      </div>
+
+      <div class="focus-item">
+        <div class="focus-head">
+          <span class="focus-tag">02</span>
+          <div class="focus-title">열역학 2법칙 — 두 갈래</div>
+        </div>
+        <div class="focus-body">
+          크게 두 가지 타입입니다. <strong>① 열기관 계산형</strong>, <strong>② 엔트로피 개념형.</strong> 어느 쪽에 무게가 실리는지는 학교 프린트의 결을 보고 따라가는 편이 좋습니다.
+        </div>
+      </div>
+
+      <div class="focus-item">
+        <div class="focus-head">
+          <span class="focus-tag">03</span>
+          <div class="focus-title">단진동 — 미분의 등장</div>
+        </div>
+        <div class="focus-body">
+          단진동에서는 이제 <strong>미분이 조금씩 등장</strong>하기 시작합니다. 식의 형태에 익숙해지는 훈련이 필요한 구간입니다.
+        </div>
+      </div>
+
+      <div class="focus-item">
+        <div class="focus-head">
+          <span class="focus-tag">04</span>
+          <div class="focus-title">탄성파 — 결국 물1 파동</div>
+        </div>
+        <div class="focus-body">
+          탄성파는 결국 <strong>물1의 파동</strong>을 다루게 됩니다. 개정된 물리학에서는 <span class="hl">파동 부분의 하드한 내용이 물2로 이전</span>되었기 때문입니다.
+        </div>
+      </div>
+
+      <div class="focus-item">
+        <div class="focus-head">
+          <span class="focus-tag">05</span>
+          <div class="focus-title">정상파 — EBS 3점 단골</div>
+        </div>
+        <div class="focus-body">
+          정상파는 고등 수준에서는 쉽지만 <strong>EBS에서는 3점 문항</strong>으로 잘 다루는 주제입니다. 방심 금물.
+        </div>
+      </div>
+
+      <div class="focus-item kill">
+        <div class="focus-head">
+          <span class="focus-tag">KILL</span>
+          <div class="focus-title">도플러 — 기말의 핵심</div>
+        </div>
+        <div class="focus-body">
+          <span class="hl">기말의 킬 포인트는 도플러 마스터입니다.</span><br><br>
+          도플러는 <strong>설·포·카·고·연 면접 주제</strong>로 빈도 높게 출제되는 영역이고, 응용으로 난이도를 끌어올리기 매우 좋은 파트입니다.<br><br>
+          특히 <strong>해당 교사가 과학고 교사 출신</strong>으로, 과고 내신에서 도플러가 범위에 포함되면 <span class="hl">고배점·고난도 서술형으로 늘 등장</span>해 왔습니다. 이번 기말의 핵심으로 예상됩니다.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing">
+    <p class="closing-quote">"물리는 최성훈"</p>
+    <p class="closing-mark">클라스가 <em>다르다</em>.</p>
+    <div class="closing-meta">대찬학원 · 진선여고 · 역학과에너지 · 기말고사</div>
+  </section>
+
+</div>
+</body>
+</html>
