@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>물리는 최성훈 · Notice Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-elev: #131313;
+    --bg-card: #181818;
+    --bg-hover: #1f1f1f;
+    --line: #262626;
+    --line-soft: #1f1f1f;
+    --ink: #f5f5f4;
+    --ink-soft: #a8a29e;
+    --ink-mute: #78716c;
+    --accent: #fbbf24;
+    --accent-soft: #fbbf2422;
+    --good: #86efac;
+    --display: 'Fraunces', serif;
+    --body: 'Pretendard', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* HEADER */
+  header {
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 36px;
+    position: relative;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .brand-dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent);
+  }
+  h1 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    margin-bottom: 8px;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .subtitle code {
+    font-family: var(--mono);
+    font-size: 12px;
+    padding: 2px 6px;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    color: var(--ink);
+  }
+
+  /* SECTION HEADING */
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .section-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+  }
+  .section-count {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+  }
+
+  /* LIST */
+  .notice-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .notice-item {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 18px;
+    transition: border-color 0.2s, transform 0.2s, background 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .notice-item:hover {
+    border-color: var(--accent-soft);
+    background: var(--bg-hover);
+  }
+
+  .notice-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.08em;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+  }
+  .badge.school { color: var(--accent); border-color: var(--accent-soft); }
+  .badge.subject { color: var(--ink); }
+  .badge.exam { background: var(--accent); color: var(--bg); font-weight: 700; border-color: var(--accent); }
+
+  .notice-title {
+    font-size: 16.5px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+  }
+  .notice-desc {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  .notice-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    flex: 1;
+    min-width: 100px;
+    font-family: var(--body);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: var(--bg);
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .btn:hover {
+    border-color: var(--accent);
+    background: var(--bg-elev);
+  }
+  .btn:active { transform: scale(0.98); }
+
+  .btn.primary {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+  .btn.primary:hover {
+    background: #f5b316;
+  }
+
+  .btn .icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  .btn.copied {
+    background: var(--good);
+    color: var(--bg);
+    border-color: var(--good);
+    font-weight: 600;
+  }
+
+  .url-display {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    word-break: break-all;
+    padding: 8px 10px;
+    background: var(--bg);
+    border: 1px solid var(--line-soft);
+    border-radius: 6px;
+    margin-top: 2px;
+    line-height: 1.5;
+  }
+
+  /* CONFIG NOTE */
+  .config-note {
+    margin-top: 32px;
+    padding: 16px 18px;
+    background: var(--bg-elev);
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+  .config-note strong { color: var(--ink); }
+  .config-note code {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 1px 5px;
+    background: var(--bg);
+    border-radius: 3px;
+    color: var(--accent);
+  }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--ink);
+    color: var(--bg);
+    padding: 12px 20px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 200;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .toast.show {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* FOOTER */
+  footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-mute);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* fade in */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .notice-item {
+    animation: fadeUp 0.5s ease-out backwards;
+  }
+  .notice-item:nth-child(1) { animation-delay: 0.05s; }
+  .notice-item:nth-child(2) { animation-delay: 0.12s; }
+  .notice-item:nth-child(3) { animation-delay: 0.19s; }
+  .notice-item:nth-child(4) { animation-delay: 0.26s; }
+  .notice-item:nth-child(5) { animation-delay: 0.33s; }
+
+  @media (max-width: 480px) {
+    .container { padding: 28px 16px 60px; }
+    h1 { font-size: 30px; }
+    .btn { font-size: 12.5px; padding: 9px 10px; min-width: 80px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <span>물리는 최성훈 · Notice Index</span>
+    </div>
+    <h1>공지 <em>인덱스</em></h1>
+    <p class="subtitle">
+      <code>notice</code> 저장소의 공개 공지 페이지 모음 — 링크를 빠르게 복사해 학생·학부모에게 전달하세요.
+    </p>
+  </header>
+
+  <div class="section-head">
+    <span class="section-title">— Analysis</span>
+    <span class="section-count" id="count">3 pages</span>
+  </div>
+
+  <div class="notice-list" id="list">
+
+    <!-- 1. 진선여고 26B 기말 -->
+    <article class="notice-item" data-path="analysis/jinseon_26Bfinals_guide.html">
+      <div class="notice-meta">
+        <span class="badge school">진선여고</span>
+        <span class="badge subject">역학과에너지</span>
+        <span class="badge exam">기말</span>
+      </div>
+      <div class="notice-title">진선여고 26B 기말고사 대비 안내</div>
+      <div class="notice-desc">열역학·엔트로피·탄성파·도플러. 기말 킬 포인트는 도플러 마스터.</div>
+      <div class="url-display" data-url></div>
+      <div class="notice-actions">
+        <a class="btn" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          열기
+        </a>
+        <button class="btn primary" data-copy>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          링크 복사
+        </button>
+      </div>
+    </article>
+
+    <!-- 2. 진선여고 중간 -->
+    <article class="notice-item" data-path="analysis/jinseon_midterm_final.html">
+      <div class="notice-meta">
+        <span class="badge school">진선여고</span>
+        <span class="badge exam">중간</span>
+      </div>
+      <div class="notice-title">진선여고 중간고사 안내</div>
+      <div class="notice-desc">중간고사 대비 수업안내 페이지.</div>
+      <div class="url-display" data-url></div>
+      <div class="notice-actions">
+        <a class="btn" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          열기
+        </a>
+        <button class="btn primary" data-copy>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          링크 복사
+        </button>
+      </div>
+    </article>
+
+    <!-- 3. 진선여고 중간 v2 -->
+    <article class="notice-item" data-path="analysis/jinseon_midterm_final_v2.html">
+      <div class="notice-meta">
+        <span class="badge school">진선여고</span>
+        <span class="badge exam">중간</span>
+        <span class="badge">v2</span>
+      </div>
+      <div class="notice-title">진선여고 중간고사 안내 (v2)</div>
+      <div class="notice-desc">중간고사 안내 개정판.</div>
+      <div class="url-display" data-url></div>
+      <div class="notice-actions">
+        <a class="btn" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          열기
+        </a>
+        <button class="btn primary" data-copy>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          링크 복사
+        </button>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="config-note">
+    <strong>📌 배포 안내</strong><br>
+    이 파일은 <code>notice</code> 저장소 루트에 <code>index.html</code>로 두면 됩니다.<br>
+    GitHub Pages가 켜져 있으면 자동으로 <code>https://shchoi83.github.io/notice/</code> 에서 접근 가능합니다.<br>
+    링크는 <strong>현재 페이지 기준 상대 경로</strong>로 자동 생성되며, 복사 시에는 <strong>전체 절대 URL</strong>이 클립보드에 들어갑니다. 새 공지를 추가할 땐 <code>notice-list</code> 안에 <code>data-path</code>만 바꿔서 복제하면 됩니다.
+  </div>
+
+  <footer>
+    물리는 최성훈 · 클라스가 다르다
+  </footer>
+
+</div>
+
+<div class="toast" id="toast">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+  <span id="toast-msg">링크가 복사되었습니다</span>
+</div>
+
+<script>
+  // 현재 페이지 URL 기준으로 각 항목의 절대 URL 생성
+  const baseUrl = window.location.href.replace(/\/index\.html$/, '/').replace(/\/$/, '/');
+  const origin = window.location.origin;
+  const pathname = window.location.pathname.replace(/index\.html$/, '');
+
+  document.querySelectorAll('.notice-item').forEach(item => {
+    const path = item.dataset.path;
+    // file:// 환경이면 경로만 보여주고, http(s) 환경이면 절대 URL
+    let absoluteUrl;
+    if (window.location.protocol === 'file:') {
+      absoluteUrl = path;
+    } else {
+      absoluteUrl = origin + pathname + path;
+    }
+
+    // URL 표시
+    const urlDisplay = item.querySelector('[data-url]');
+    if (urlDisplay) urlDisplay.textContent = absoluteUrl;
+
+    // 열기 버튼
+    const openBtn = item.querySelector('a.btn');
+    if (openBtn) openBtn.href = path;
+
+    // 복사 버튼
+    const copyBtn = item.querySelector('[data-copy]');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(absoluteUrl);
+          showToast('링크가 복사되었습니다');
+          copyBtn.classList.add('copied');
+          const originalHTML = copyBtn.innerHTML;
+          copyBtn.innerHTML = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 복사됨';
+          setTimeout(() => {
+            copyBtn.classList.remove('copied');
+            copyBtn.innerHTML = originalHTML;
+          }, 1600);
+        } catch (e) {
+          // fallback
+          const tmp = document.createElement('textarea');
+          tmp.value = absoluteUrl;
+          document.body.appendChild(tmp);
+          tmp.select();
+          document.execCommand('copy');
+          document.body.removeChild(tmp);
+          showToast('링크가 복사되었습니다');
+        }
+      });
+    }
+  });
+
+  // 카운트 업데이트
+  const count = document.querySelectorAll('.notice-item').length;
+  document.getElementById('count').textContent = count + ' page' + (count !== 1 ? 's' : '');
+
+  // 토스트
+  const toast = document.getElementById('toast');
+  const toastMsg = document.getElementById('toast-msg');
+  let toastTimer;
+  function showToast(msg) {
+    toastMsg.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+  }
+</script>
+
+</body>
+</html>
