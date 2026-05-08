@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DLCP3VCR3J"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-DLCP3VCR3J');
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>대신고 중간분석 · 물리는 최성훈</title>
 
-<!-- ===== Open Graph / 카톡 썸네일 ===== -->
+<!-- Open Graph / 카톡 썸네일 -->
 <meta name="description" content="'대신고 중간분석' by 물리는 최성훈">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="물리는 최성훈">
@@ -23,407 +22,515 @@
 <meta property="og:image" content="https://shchoi83.github.io/notice/analysis/logo.png">
 <meta property="og:url" content="https://shchoi83.github.io/notice/analysis/daesin_26A_analy_and_26B_guide.html">
 <meta property="og:locale" content="ko_KR">
-<!-- 트위터/X 카드 (카톡 외 플랫폼 보조) -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="대신고 중간분석">
 <meta name="twitter:description" content="'대신고 중간분석' by 물리는 최성훈">
 <meta name="twitter:image" content="https://shchoi83.github.io/notice/analysis/logo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Serif+KR:wght@400;500;700;900&family=Noto+Sans+KR:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+
 <style>
   :root {
-    --ink: #1a1a1a;
-    --paper: #f4f1ea;
-    --paper-dark: #e8e3d6;
-    --accent: #c8362d;
-    --accent-dark: #8b1f18;
-    --gold: #b08d57;
-    --easy: #4a7c59;
-    --easy-mid: #7ba05b;
-    --mid: #d4a04a;
-    --hard: #c8362d;
-    --muted: #6b6862;
+    /* 심플 모노톤 + 최소 강조색 */
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --fg-soft: #4a4a4a;
+    --fg-mute: #888888;
+    --line: #e5e5e5;
+    --line-strong: #1a1a1a;
+    --surface: #f7f7f7;
+    --highlight: #fff5cc;
+
+    /* 난이도 — 차분한 단색 */
+    --d-easy: #5a8a6b;
+    --d-mid: #c89a3a;
+    --d-hard: #b8453a;
+
+    /* 폰트 사이즈 (노안 고려, 모바일 기준) */
+    --fs-base: 17px;
+    --fs-sm: 15px;
+    --fs-md: 18px;
+    --fs-lg: 22px;
+    --fs-xl: 26px;
+    --fs-2xl: 32px;
   }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
   body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background: var(--paper);
-    color: var(--ink);
+    font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    font-size: var(--fs-base);
     line-height: 1.7;
-    background-image:
-      radial-gradient(circle at 20% 30%, rgba(176, 141, 87, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 80% 70%, rgba(200, 54, 45, 0.05) 0%, transparent 50%);
-    min-height: 100vh;
+    word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
   }
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    pointer-events: none; z-index: 1;
-    opacity: 0.04;
-    background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.5) 2px, rgba(0,0,0,0.5) 3px);
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 28px 18px 60px;
   }
-  .container { max-width: 1100px; margin: 0 auto; padding: 50px 40px; position: relative; z-index: 2; }
 
-  /* 로고 */
-  .brand { text-align: center; margin-bottom: 36px; }
-  .brand img { max-width: 360px; width: 65%; height: auto; }
-
-  /* 마스트헤드 */
-  .masthead {
-    border-top: 4px double var(--ink);
-    border-bottom: 4px double var(--ink);
-    padding: 32px 0 28px;
-    margin-bottom: 60px;
+  /* === 로고 === */
+  .brand {
     text-align: center;
-    position: relative;
+    margin-bottom: 28px;
   }
-  .masthead-stamp {
-    position: absolute; top: 16px; right: 0;
-    border: 2px solid var(--accent); color: var(--accent);
-    padding: 6px 14px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 14px; letter-spacing: 2px;
-    transform: rotate(4deg);
-    background: rgba(244, 241, 234, 0.8);
+  .brand img {
+    width: 70%;
+    max-width: 280px;
+    height: auto;
+  }
+
+  /* === 헤더 === */
+  .masthead {
+    text-align: center;
+    padding: 24px 0;
+    border-top: 2px solid var(--line-strong);
+    border-bottom: 2px solid var(--line-strong);
+    margin-bottom: 36px;
   }
   .masthead-eyebrow {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 14px; letter-spacing: 6px;
-    color: var(--muted); margin-bottom: 12px;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--fg-mute);
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
   }
   .masthead h1 {
-    font-family: 'Noto Serif KR', serif;
-    font-weight: 900;
-    font-size: clamp(30px, 5vw, 50px);
-    letter-spacing: -1px; line-height: 1.15;
+    font-size: var(--fs-2xl);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.25;
     margin-bottom: 14px;
   }
   .masthead-meta {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px; color: var(--muted); letter-spacing: 1px;
+    font-size: var(--fs-sm);
+    color: var(--fg-soft);
+    font-weight: 500;
+    line-height: 1.6;
   }
-  .masthead-meta span { margin: 0 12px; }
+  .masthead-meta span {
+    margin: 0 4px;
+  }
 
-  /* 섹션 */
-  .section { margin-bottom: 80px; }
+  /* === 섹션 === */
+  .section { margin-bottom: 48px; }
   .section-header {
-    display: flex; align-items: baseline; gap: 20px;
-    margin-bottom: 32px; padding-bottom: 14px;
-    border-bottom: 2px solid var(--ink);
+    margin-bottom: 22px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--line-strong);
   }
   .section-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 56px; color: var(--accent); line-height: 1;
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--fg-mute);
+    letter-spacing: 2px;
+    margin-bottom: 4px;
   }
   .section-title {
-    font-family: 'Noto Serif KR', serif;
-    font-weight: 700; font-size: 28px; letter-spacing: -0.5px;
-  }
-  .section-sub {
-    margin-left: auto;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px; color: var(--muted); letter-spacing: 2px;
+    font-size: var(--fs-xl);
+    font-weight: 800;
+    letter-spacing: -0.5px;
   }
 
-  /* 통계 카드 */
+  /* === 통계 카드 === */
   .stats-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 16px; margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 22px;
   }
   .stat-card {
-    border: 1.5px solid var(--ink);
-    padding: 24px 20px; background: var(--paper);
-    transition: transform 0.3s;
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 14px;
+    background: var(--bg);
   }
-  .stat-card:hover { transform: translateY(-3px); }
-  .stat-card.easy { border-left: 8px solid var(--easy); }
-  .stat-card.easy-mid { border-left: 8px solid var(--easy-mid); }
-  .stat-card.mid { border-left: 8px solid var(--mid); }
-  .stat-card.hard { border-left: 8px solid var(--hard); }
+  .stat-card .stat-bar {
+    width: 28px;
+    height: 4px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+  }
+  .stat-card.easy .stat-bar { background: var(--d-easy); }
+  .stat-card.easy-mid .stat-bar { background: linear-gradient(90deg, var(--d-easy), var(--d-mid)); }
+  .stat-card.mid .stat-bar { background: var(--d-mid); }
+  .stat-card.hard .stat-bar { background: var(--d-hard); }
+
   .stat-label {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 14px; letter-spacing: 3px; color: var(--muted);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--fg-soft);
+    margin-bottom: 4px;
   }
   .stat-value {
-    font-family: 'Noto Serif KR', serif;
-    font-weight: 900; font-size: 48px; line-height: 1.1; margin: 4px 0;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1px;
   }
   .stat-value .unit {
-    font-size: 18px; color: var(--muted);
-    font-weight: 400; margin-left: 4px;
+    font-size: 16px;
+    color: var(--fg-mute);
+    font-weight: 500;
+    margin-left: 3px;
   }
   .stat-detail {
-    font-size: 12px; color: var(--muted);
-    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--fg-mute);
+    font-weight: 500;
+    margin-top: 4px;
   }
 
-  /* 분포 차트 */
+  /* === 분포 바 === */
   .distribution {
-    border: 1.5px solid var(--ink);
-    padding: 28px; background: var(--paper); margin-bottom: 24px;
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 16px;
+    background: var(--surface);
   }
   .distribution-title {
-    font-family: 'Noto Serif KR', serif;
-    font-weight: 700; font-size: 18px;
-    margin-bottom: 20px;
-    display: flex; align-items: center; gap: 10px;
+    font-size: var(--fs-md);
+    font-weight: 700;
+    margin-bottom: 14px;
   }
-  .distribution-title::before { content: '◆'; color: var(--accent); }
   .bar-row {
-    display: grid; grid-template-columns: 80px 1fr 60px;
-    align-items: center; gap: 14px; margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 56px 1fr 56px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
   }
+  .bar-row:last-child { margin-bottom: 0; }
   .bar-label {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 16px; letter-spacing: 2px;
+    font-size: var(--fs-base);
+    font-weight: 700;
   }
   .bar-track {
-    height: 28px; background: var(--paper-dark);
-    border: 1px solid var(--ink); overflow: hidden;
+    height: 22px;
+    background: #ececec;
+    border-radius: 4px;
+    overflow: hidden;
   }
   .bar-fill {
     height: 100%;
-    transition: width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border-radius: 4px;
   }
-  .bar-fill.easy { background: repeating-linear-gradient(45deg, var(--easy), var(--easy) 8px, #5a8c69 8px, #5a8c69 16px); }
-  .bar-fill.easy-mid { background: var(--easy-mid); }
-  .bar-fill.mid { background: var(--mid); }
-  .bar-fill.hard { background: repeating-linear-gradient(45deg, var(--hard), var(--hard) 6px, var(--accent-dark) 6px, var(--accent-dark) 12px); }
+  .bar-fill.easy { background: var(--d-easy); }
+  .bar-fill.easy-mid { background: var(--d-mid); opacity: 0.55; }
+  .bar-fill.mid { background: var(--d-mid); }
+  .bar-fill.hard { background: var(--d-hard); }
   .bar-value {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 700; font-size: 14px; text-align: right;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: right;
+    color: var(--fg-soft);
   }
 
-  /* 파트별 카드 */
-  .parts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  /* === 파트별 카드 === */
+  .parts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
   .part-card {
-    border: 1.5px solid var(--ink);
-    padding: 24px; background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 16px;
   }
   .part-card-header {
-    display: flex; justify-content: space-between; align-items: baseline;
-    margin-bottom: 16px; padding-bottom: 12px;
-    border-bottom: 1px dashed var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
   }
   .part-card-title {
-    font-family: 'Noto Serif KR', serif;
-    font-weight: 700; font-size: 17px;
+    font-size: var(--fs-md);
+    font-weight: 700;
   }
   .part-card-count {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px; color: var(--accent); letter-spacing: 1px;
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    color: var(--fg-mute);
   }
   .part-mini-bar {
-    display: flex; height: 8px; margin-bottom: 12px;
-    border: 1px solid var(--ink);
+    display: flex;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    background: #ececec;
+    margin-bottom: 10px;
   }
   .part-mini-bar > div { height: 100%; }
   .part-card-items {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px; color: var(--muted); line-height: 1.8;
+    font-size: var(--fs-sm);
+    color: var(--fg-soft);
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+  .part-card-avg {
+    font-size: var(--fs-sm);
+    color: var(--fg-soft);
+  }
+  .part-card-avg strong {
+    color: var(--fg);
+    font-weight: 700;
   }
 
-  /* 문항 카드 */
-  .items-stack { display: flex; flex-direction: column; gap: 18px; }
+  /* === 문항 카드 === */
+  .items-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
   .item {
-    display: grid; grid-template-columns: 80px 1fr 90px;
-    gap: 24px; padding: 20px 24px;
-    background: var(--paper);
-    border: 1.5px solid var(--ink);
-    border-left-width: 6px;
-    transition: all 0.25s;
+    border: 1.5px solid var(--line);
+    border-left-width: 5px;
+    border-radius: 10px;
+    padding: 16px 16px;
   }
-  .item:hover {
-    transform: translateX(4px);
-    box-shadow: -6px 6px 0 var(--ink);
+  .item.easy { border-left-color: var(--d-easy); }
+  .item.easy-mid { border-left-color: var(--d-mid); }
+  .item.mid { border-left-color: var(--d-mid); }
+  .item.hard { border-left-color: var(--d-hard); background: #fdf8f7; }
+
+  .item-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
   }
-  .item.easy { border-left-color: var(--easy); }
-  .item.easy-mid { border-left-color: var(--easy-mid); }
-  .item.mid { border-left-color: var(--mid); }
-  .item.hard {
-    border-left-color: var(--hard);
-    background: linear-gradient(to right, rgba(200,54,45,0.04), var(--paper) 30%);
+  .item-num-block {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
   }
   .item-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 42px; line-height: 1; align-self: start;
+    font-size: var(--fs-xl);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -1px;
   }
-  .item-num small {
-    display: block;
-    font-size: 11px; letter-spacing: 2px;
-    color: var(--muted); margin-top: 2px;
+  .item-num-type {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--fg-mute);
+    letter-spacing: 1.5px;
   }
-  .item-body { padding-top: 4px; }
-  .item-topic {
-    font-family: 'Noto Serif KR', serif;
-    font-weight: 700; font-size: 16px; margin-bottom: 8px;
-  }
-  .item-comment { font-size: 14px; line-height: 1.75; }
-  .item-comment .tag {
-    display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; padding: 2px 8px;
-    background: var(--paper-dark);
-    border: 1px solid var(--ink);
-    margin-right: 6px; margin-bottom: 4px;
-    letter-spacing: 0.5px;
-  }
-  .item-comment .tag.warn {
-    background: var(--accent); color: var(--paper);
-    border-color: var(--accent-dark);
-  }
-  .item-comment .tag.gold {
-    background: var(--gold); color: var(--paper);
-    border-color: var(--gold);
-  }
-  .item-difficulty { text-align: center; align-self: center; }
   .difficulty-badge {
+    font-size: 14px;
+    font-weight: 800;
+    padding: 5px 12px;
+    border-radius: 999px;
+    color: #fff;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+  .difficulty-badge.easy { background: var(--d-easy); }
+  .difficulty-badge.easy-mid { background: linear-gradient(90deg, var(--d-easy), var(--d-mid)); }
+  .difficulty-badge.mid { background: var(--d-mid); }
+  .difficulty-badge.hard { background: var(--d-hard); }
+
+  .item-topic {
+    font-size: var(--fs-md);
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .tag-row { margin-bottom: 8px; }
+  .tag {
     display: inline-block;
-    width: 60px; height: 60px; line-height: 60px;
-    border-radius: 50%;
-    font-family: 'Noto Serif KR', serif;
-    font-weight: 900; font-size: 22px;
-    color: var(--paper); margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: #f0f0f0;
+    color: var(--fg-soft);
+    margin-right: 4px;
+    margin-bottom: 4px;
   }
-  .difficulty-badge.easy { background: var(--easy); }
-  .difficulty-badge.easy-mid {
-    background: linear-gradient(135deg, var(--easy) 50%, var(--mid) 50%);
+  .tag.warn { background: #fbe8e6; color: var(--d-hard); }
+  .tag.gold { background: #fcf3dd; color: #8a6c1f; }
+
+  .item-comment {
+    font-size: var(--fs-base);
+    line-height: 1.7;
+    color: var(--fg);
   }
-  .difficulty-badge.mid { background: var(--mid); }
-  .difficulty-badge.hard {
-    background: var(--hard);
-    box-shadow: 0 0 0 3px var(--paper), 0 0 0 4px var(--hard);
-  }
-  .difficulty-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; letter-spacing: 1.5px; color: var(--muted);
+  .item-comment strong {
+    font-weight: 700;
+    background: var(--highlight);
+    padding: 0 3px;
   }
 
-  /* 총평 박스 */
+  /* === 총평 박스 === */
   .verdict {
-    background: var(--ink); color: var(--paper);
-    padding: 60px 50px; margin: 80px 0;
-    position: relative; overflow: hidden;
-  }
-  .verdict::before {
-    content: '評';
-    position: absolute; top: -40px; right: -20px;
-    font-family: 'Noto Serif KR', serif;
-    font-size: 280px; font-weight: 900;
-    color: rgba(244, 241, 234, 0.05); line-height: 1;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 32px 22px;
+    margin: 40px 0 28px;
+    border-radius: 14px;
   }
   .verdict-eyebrow {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 14px; letter-spacing: 6px;
-    color: var(--gold); margin-bottom: 12px;
-    position: relative; z-index: 2;
+    font-size: 13px;
+    font-weight: 700;
+    color: #999;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
   }
   .verdict h2 {
-    font-family: 'Noto Serif KR', serif;
-    font-weight: 900; font-size: 38px;
-    margin-bottom: 32px; letter-spacing: -1px; line-height: 1.2;
-    position: relative; z-index: 2;
+    font-size: var(--fs-2xl);
+    font-weight: 800;
+    margin-bottom: 26px;
+    letter-spacing: -0.5px;
   }
-  .verdict-block { margin-bottom: 28px; position: relative; z-index: 2; }
+  .verdict-block { margin-bottom: 24px; }
+  .verdict-block:last-child { margin-bottom: 0; }
   .verdict-block-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px; letter-spacing: 3px;
-    color: var(--gold); margin-bottom: 10px;
-    padding-left: 14px; border-left: 3px solid var(--gold);
+    font-size: var(--fs-md);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-left: 3px solid #fff;
   }
   .verdict-block p {
-    font-size: 15.5px; line-height: 1.85;
-    color: rgba(244, 241, 234, 0.92);
+    font-size: var(--fs-base);
+    line-height: 1.8;
+    color: #d8d8d8;
   }
+  .verdict-block p + p { margin-top: 10px; }
   .verdict-block p strong {
-    color: var(--paper); font-weight: 700;
-    background: linear-gradient(transparent 60%, rgba(200,54,45,0.5) 60%);
-    padding: 0 2px;
+    color: #fff;
+    font-weight: 700;
   }
   .verdict-block p em {
-    color: var(--gold); font-style: normal; font-weight: 700;
+    color: #fff;
+    font-style: normal;
+    font-weight: 700;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 1px;
   }
 
   /* 킬러 박스 */
   .killer-box {
-    border: 3px double var(--gold);
-    padding: 20px 24px; margin: 16px 0;
-    background: rgba(176, 141, 87, 0.08);
-    position: relative; z-index: 2;
+    border: 2px solid #fff;
+    border-radius: 12px;
+    padding: 20px 18px;
+    margin: 18px 0;
+    background: rgba(255,255,255,0.03);
   }
   .killer-box .label {
     display: inline-block;
-    background: var(--accent); color: var(--paper);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 13px; letter-spacing: 2px;
-    padding: 4px 12px; margin-bottom: 10px;
+    background: var(--d-hard);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 14px;
   }
   .killer-box p {
-    font-size: 15px; line-height: 1.85;
-    color: rgba(244, 241, 234, 0.95);
+    font-size: var(--fs-base);
+    line-height: 1.8;
+    color: #f0f0f0;
+  }
+  .killer-box p + p { margin-top: 10px; }
+  .killer-box .punchline {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    font-size: var(--fs-md);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.6;
+  }
+  .killer-box .punchline-quote {
+    display: inline-block;
+    background: var(--d-hard);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 6px;
+    margin-top: 6px;
   }
 
-  /* 만남 박스 */
+  /* === 마무리 === */
   .closing {
-    border: 2px solid var(--ink);
-    padding: 32px 28px; background: var(--paper);
-    text-align: center; margin-top: 60px;
-    position: relative;
+    border: 2px solid var(--line-strong);
+    border-radius: 14px;
+    padding: 28px 22px;
+    text-align: center;
+    margin-top: 28px;
   }
-  .closing::before, .closing::after {
-    content: ''; position: absolute;
-    width: 30px; height: 30px;
-    border: 2px solid var(--accent);
-  }
-  .closing::before { top: -8px; left: -8px; border-right: none; border-bottom: none; }
-  .closing::after { bottom: -8px; right: -8px; border-left: none; border-top: none; }
   .closing-mark {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 14px; letter-spacing: 4px;
-    color: var(--accent); margin-bottom: 14px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--fg-mute);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
   }
   .closing h3 {
-    font-family: 'Noto Serif KR', serif;
-    font-weight: 900; font-size: 26px;
-    margin-bottom: 14px; letter-spacing: -0.5px;
+    font-size: var(--fs-xl);
+    font-weight: 800;
+    line-height: 1.4;
+    letter-spacing: -0.5px;
+    margin-bottom: 18px;
   }
   .closing-meta {
-    display: inline-flex; gap: 24px; flex-wrap: wrap;
-    justify-content: center; margin-top: 18px;
-    padding-top: 18px; border-top: 1px dashed var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--line);
   }
   .closing-meta-item {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
+    font-size: var(--fs-base);
+    line-height: 1.5;
   }
   .closing-meta-item strong {
     display: block;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 11px; letter-spacing: 2px;
-    color: var(--accent); margin-bottom: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--fg-mute);
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
   }
 
-  /* 푸터 */
+  /* === 푸터 === */
   .footer {
-    text-align: center; padding: 40px 0 20px;
-    margin-top: 60px;
-    border-top: 1px solid var(--ink);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; letter-spacing: 2px; color: var(--muted);
+    text-align: center;
+    padding: 28px 0 0;
+    margin-top: 36px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--fg-mute);
+    letter-spacing: 0.5px;
   }
 
-  @media (max-width: 768px) {
-    .container { padding: 30px 20px; }
-    .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .parts-grid { grid-template-columns: 1fr; }
-    .item { grid-template-columns: 60px 1fr; }
-    .item-difficulty { grid-column: 1 / -1; text-align: left; display: flex; align-items: center; gap: 12px; }
-    .difficulty-badge { width: 44px; height: 44px; line-height: 44px; font-size: 16px; margin-bottom: 0; }
-    .verdict { padding: 36px 24px; }
-    .verdict h2 { font-size: 26px; }
-    .masthead-stamp { position: static; display: inline-block; margin-bottom: 16px; }
+  /* === 데스크탑 === */
+  @media (min-width: 720px) {
+    :root {
+      --fs-base: 18px;
+      --fs-md: 20px;
+      --fs-lg: 24px;
+      --fs-xl: 30px;
+      --fs-2xl: 38px;
+    }
+    .container { padding: 50px 40px 80px; }
+    .stats-grid { grid-template-columns: repeat(4, 1fr); }
+    .parts-grid { grid-template-columns: repeat(2, 1fr); }
+    .closing-meta {
+      flex-direction: row;
+      justify-content: center;
+      gap: 50px;
+    }
   }
 </style>
 </head>
@@ -437,40 +544,42 @@
 
   <!-- 마스트헤드 -->
   <header class="masthead">
-    <div class="masthead-stamp">ANALYSIS · 26A</div>
-    <div class="masthead-eyebrow">DAESHIN HIGH SCHOOL · MIDTERM</div>
-    <h1>대신고 26학년도<br>1학기 중간고사 분석</h1>
+    <div class="masthead-eyebrow">DAESHIN · MIDTERM</div>
+    <h1>대신고 중간고사 분석</h1>
     <div class="masthead-meta">
-      <span>2학년 물리학</span>·<span>2026.05.06 시행</span>·<span>총 26문항</span>
+      <span>2학년 1학기</span>·<span>2026.05.06 시행</span>·<span>총 26문항</span>
     </div>
   </header>
 
-  <!-- 섹션 1: 한눈에 보기 -->
+  <!-- 섹션 1 -->
   <section class="section">
     <div class="section-header">
-      <div class="section-num">01</div>
+      <div class="section-num">01 OVERVIEW</div>
       <div class="section-title">한눈에 보기</div>
-      <div class="section-sub">OVERVIEW</div>
     </div>
 
     <div class="stats-grid">
       <div class="stat-card easy">
-        <div class="stat-label">EASY · 하</div>
+        <div class="stat-bar"></div>
+        <div class="stat-label">난이도 하</div>
         <div class="stat-value">18<span class="unit">문항</span></div>
         <div class="stat-detail">69.2%</div>
       </div>
       <div class="stat-card easy-mid">
-        <div class="stat-label">EASY-MID · 하~중</div>
+        <div class="stat-bar"></div>
+        <div class="stat-label">하 ~ 중</div>
         <div class="stat-value">1<span class="unit">문항</span></div>
         <div class="stat-detail">3.8%</div>
       </div>
       <div class="stat-card mid">
-        <div class="stat-label">MEDIUM · 중</div>
+        <div class="stat-bar"></div>
+        <div class="stat-label">난이도 중</div>
         <div class="stat-value">4<span class="unit">문항</span></div>
         <div class="stat-detail">15.4%</div>
       </div>
       <div class="stat-card hard">
-        <div class="stat-label">HARD · 상</div>
+        <div class="stat-bar"></div>
+        <div class="stat-label">난이도 상</div>
         <div class="stat-value">3<span class="unit">문항</span></div>
         <div class="stat-detail">11.5%</div>
       </div>
@@ -501,12 +610,11 @@
     </div>
   </section>
 
-  <!-- 섹션 2: 파트별 분석 -->
+  <!-- 섹션 2 -->
   <section class="section">
     <div class="section-header">
-      <div class="section-num">02</div>
+      <div class="section-num">02 BY UNIT</div>
       <div class="section-title">파트별 비율 · 난이도</div>
-      <div class="section-sub">BY UNIT</div>
     </div>
 
     <div class="parts-grid">
@@ -516,10 +624,10 @@
           <div class="part-card-count">5문항</div>
         </div>
         <div class="part-mini-bar">
-          <div style="width: 100%; background: var(--easy);"></div>
+          <div style="width: 100%; background: var(--d-easy);"></div>
         </div>
-        <div class="part-card-items">선1, 7, 9, 11 · 서답형 全 평이</div>
-        <div style="margin-top: 8px; font-size: 13px;">평균 난이도 <strong>하</strong></div>
+        <div class="part-card-items">선1, 7, 9, 11 · 서답형 평이</div>
+        <div class="part-card-avg">평균 난이도 <strong>하</strong></div>
       </div>
 
       <div class="part-card">
@@ -528,11 +636,11 @@
           <div class="part-card-count">7문항</div>
         </div>
         <div class="part-mini-bar">
-          <div style="width: 71.4%; background: var(--easy);"></div>
-          <div style="width: 28.6%; background: var(--mid);"></div>
+          <div style="width: 71.4%; background: var(--d-easy);"></div>
+          <div style="width: 28.6%; background: var(--d-mid);"></div>
         </div>
         <div class="part-card-items">선2, 3, 6, 8, 12, 15 · 서답5,6</div>
-        <div style="margin-top: 8px; font-size: 13px;">평균 난이도 <strong>하~중</strong></div>
+        <div class="part-card-avg">평균 난이도 <strong>하 ~ 중</strong></div>
       </div>
 
       <div class="part-card">
@@ -541,11 +649,11 @@
           <div class="part-card-count">3문항</div>
         </div>
         <div class="part-mini-bar">
-          <div style="width: 66.7%; background: var(--easy);"></div>
-          <div style="width: 33.3%; background: var(--hard);"></div>
+          <div style="width: 66.7%; background: var(--d-easy);"></div>
+          <div style="width: 33.3%; background: var(--d-hard);"></div>
         </div>
         <div class="part-card-items">선5, 8 · 선19(빗면충돌)</div>
-        <div style="margin-top: 8px; font-size: 13px;">평균 난이도 <strong>중</strong></div>
+        <div class="part-card-avg">평균 난이도 <strong>중</strong></div>
       </div>
 
       <div class="part-card">
@@ -554,11 +662,11 @@
           <div class="part-card-count">3문항</div>
         </div>
         <div class="part-mini-bar">
-          <div style="width: 33.3%; background: var(--easy);"></div>
-          <div style="width: 66.7%; background: var(--mid);"></div>
+          <div style="width: 33.3%; background: var(--d-easy);"></div>
+          <div style="width: 66.7%; background: var(--d-mid);"></div>
         </div>
         <div class="part-card-items">선10, 13, 16</div>
-        <div style="margin-top: 8px; font-size: 13px;">평균 난이도 <strong>중</strong></div>
+        <div class="part-card-avg">평균 난이도 <strong>중</strong></div>
       </div>
 
       <div class="part-card">
@@ -567,10 +675,10 @@
           <div class="part-card-count">2문항</div>
         </div>
         <div class="part-mini-bar">
-          <div style="width: 100%; background: var(--hard);"></div>
+          <div style="width: 100%; background: var(--d-hard);"></div>
         </div>
         <div class="part-card-items">선17(용수철 통합) · 선18(킬러)</div>
-        <div style="margin-top: 8px; font-size: 13px;">평균 난이도 <strong>상</strong></div>
+        <div class="part-card-avg">평균 난이도 <strong>상</strong></div>
       </div>
 
       <div class="part-card">
@@ -579,423 +687,371 @@
           <div class="part-card-count">6문항</div>
         </div>
         <div class="part-mini-bar">
-          <div style="width: 83.3%; background: var(--easy);"></div>
-          <div style="width: 16.7%; background: var(--mid);"></div>
+          <div style="width: 83.3%; background: var(--d-easy);"></div>
+          <div style="width: 16.7%; background: var(--d-mid);"></div>
         </div>
         <div class="part-card-items">선4, 14, 20 · 서1, 2, 3</div>
-        <div style="margin-top: 8px; font-size: 13px;">평균 난이도 <strong>하</strong></div>
+        <div class="part-card-avg">평균 난이도 <strong>하</strong></div>
       </div>
     </div>
   </section>
 
-  <!-- 섹션 3: 선택형 문항 분석 -->
+  <!-- 섹션 3: 선택형 -->
   <section class="section">
     <div class="section-header">
-      <div class="section-num">03</div>
+      <div class="section-num">03 SELECT · Q.01 — Q.20</div>
       <div class="section-title">선택형 문항 분석</div>
-      <div class="section-sub">Q.01 — Q.20</div>
     </div>
 
     <div class="items-stack">
+
       <div class="item easy">
-        <div class="item-num">01<small>SELECT</small></div>
-        <div class="item-body">
-          <div class="item-topic">등가속도 직선 운동</div>
-          <div class="item-comment">
-            <span class="tag">기초</span>
-            기초문제로서 난이도 하. 코멘트가 필요없다.
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">01</span>
+            <span class="item-num-type">선택형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge easy">하</div>
-          <div class="difficulty-label">EASY</div>
         </div>
+        <div class="item-topic">등가속도 직선 운동</div>
+        <div class="tag-row"><span class="tag">기초</span></div>
+        <div class="item-comment">기초문제로서 난이도 하. 코멘트가 필요없다.</div>
       </div>
 
       <div class="item easy">
-        <div class="item-num">02<small>SELECT</small></div>
-        <div class="item-body">
-          <div class="item-topic">평형 · 천장에 미는 힘</div>
-          <div class="item-comment">
-            <span class="tag">학프</span>
-            학교프린트에 동일한 문제가 있음. 난이도 하.
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">02</span>
+            <span class="item-num-type">선택형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge easy">하</div>
-          <div class="difficulty-label">EASY</div>
         </div>
+        <div class="item-topic">평형 · 천장에 미는 힘</div>
+        <div class="tag-row"><span class="tag">학프</span></div>
+        <div class="item-comment">학교프린트에 동일한 문제가 있음. 난이도 하.</div>
       </div>
 
       <div class="item easy">
-        <div class="item-num">03<small>SELECT</small></div>
-        <div class="item-body">
-          <div class="item-topic">알짜힘 · 작용 반작용</div>
-          <div class="item-comment">
-            <span class="tag">교과서</span>
-            교과서 수준의 기본문제. 난이도 하. 코멘트 필요없다.
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">03</span>
+            <span class="item-num-type">선택형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge easy">하</div>
-          <div class="difficulty-label">EASY</div>
         </div>
+        <div class="item-topic">알짜힘 · 작용 반작용</div>
+        <div class="tag-row"><span class="tag">교과서</span></div>
+        <div class="item-comment">교과서 수준의 기본문제. 난이도 하. 코멘트 필요없다.</div>
       </div>
 
       <div class="item easy">
-        <div class="item-num">04<small>SELECT</small></div>
-        <div class="item-body">
-          <div class="item-topic">줄의 실험장치 · 열-일 전환</div>
-          <div class="item-comment">
-            <span class="tag">교과서</span><span class="tag">학프</span>
-            교과서 수준의 기본문제이면서 학교프린트에도 있는 문제. 난이도 하.
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">04</span>
+            <span class="item-num-type">선택형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge easy">하</div>
-          <div class="difficulty-label">EASY</div>
         </div>
+        <div class="item-topic">줄의 실험장치 · 열-일 전환</div>
+        <div class="tag-row"><span class="tag">교과서</span><span class="tag">학프</span></div>
+        <div class="item-comment">교과서 수준의 기본문제이면서 학교프린트에도 있는 문제. 난이도 하.</div>
       </div>
 
       <div class="item easy">
-        <div class="item-num">05<small>SELECT</small></div>
-        <div class="item-body">
-          <div class="item-topic">F-s 그래프 · 일과 에너지</div>
-          <div class="item-comment">
-            <span class="tag">기초</span>
-            F-x 그래프 해석. 일과 에너지의 관계. 난이도 하. 출처를 분석할 필요도 없는 기초문제.
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">05</span>
+            <span class="item-num-type">선택형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge easy">하</div>
-          <div class="difficulty-label">EASY</div>
         </div>
+        <div class="item-topic">F-s 그래프 · 일과 에너지</div>
+        <div class="tag-row"><span class="tag">기초</span></div>
+        <div class="item-comment">F-x 그래프 해석. 일과 에너지의 관계. 난이도 하. 출처를 분석할 필요도 없는 기초문제.</div>
       </div>
 
       <div class="item easy">
-        <div class="item-num">06<small>SELECT</small></div>
-        <div class="item-body">
-          <div class="item-topic">뉴턴법칙 · 연결된 물체</div>
-          <div class="item-comment">
-            <span class="tag">기초</span>
-            뉴턴 기본문제. 난이도 하. 코멘트할 가치가 없음.
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">06</span>
+            <span class="item-num-type">선택형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge easy">하</div>
-          <div class="difficulty-label">EASY</div>
         </div>
+        <div class="item-topic">뉴턴법칙 · 연결된 물체</div>
+        <div class="tag-row"><span class="tag">기초</span></div>
+        <div class="item-comment">뉴턴 기본문제. 난이도 하. 코멘트할 가치가 없음.</div>
       </div>
 
       <div class="item easy">
-        <div class="item-num">07<small>SELECT</small></div>
-        <div class="item-body">
-          <div class="item-topic">등가속도 운동 · 평균 속력</div>
-          <div class="item-comment">
-            <span class="tag">기초</span>
-            등가속도 운동의 기본, 평균 속력의 개념. 난이도 하. 기본서 아무 책이나 풀어도 준비가 될 문제.
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">07</span>
+            <span class="item-num-type">선택형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge easy">하</div>
-          <div class="difficulty-label">EASY</div>
         </div>
+        <div class="item-topic">등가속도 운동 · 평균 속력</div>
+        <div class="tag-row"><span class="tag">기초</span></div>
+        <div class="item-comment">등가속도 운동의 기본, 평균 속력의 개념. 난이도 하. 기본서 아무 책이나 풀어도 준비가 될 문제.</div>
       </div>
 
       <div class="item easy">
-        <div class="item-num">08<small>SELECT</small></div>
-        <div class="item-body">
-          <div class="item-topic">운동량 보존</div>
-          <div class="item-comment">
-            <span class="tag">교과서</span>
-            운동량 보존 기본. 교과서 수준의 문제.
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">08</span>
+            <span class="item-num-type">선택형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge easy">하</div>
-          <div class="difficulty-label">EASY</div>
         </div>
+        <div class="item-topic">운동량 보존</div>
+        <div class="tag-row"><span class="tag">교과서</span></div>
+        <div class="item-comment">운동량 보존 기본. 교과서 수준의 문제.</div>
       </div>
 
       <div class="item easy">
-        <div class="item-num">09<small>SELECT</small></div>
-        <div class="item-body">
-          <div class="item-topic">자동차 안전거리 · 공주거리/제동거리</div>
-          <div class="item-comment">
-            <span class="tag">교과서</span><span class="tag gold">온라인퀴즈</span>
-            학교프린트에는 없었고 교과서 지문을 그대로 적용한 문제. <strong>우리는 온라인퀴즈로 이것을 공부했었다.</strong> 난이도 하.
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">09</span>
+            <span class="item-num-type">선택형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge easy">하</div>
-          <div class="difficulty-label">EASY</div>
         </div>
+        <div class="item-topic">자동차 안전거리 · 공주거리/제동거리</div>
+        <div class="tag-row"><span class="tag">교과서</span><span class="tag gold">온라인퀴즈</span></div>
+        <div class="item-comment">학교프린트에는 없었고 교과서 지문을 그대로 적용한 문제. <strong>우리는 온라인퀴즈로 이것을 공부했었다.</strong> 난이도 하.</div>
       </div>
 
       <div class="item mid">
-        <div class="item-num">10<small>SELECT</small></div>
-        <div class="item-body">
-          <div class="item-topic">돌림힘 · 막대 균형 (x₂/x₁)</div>
-          <div class="item-comment">
-            <span class="tag">학프</span><span class="tag">완자</span>
-            학교프린트에 있는 문제이자, 완자에 있는 문제를 업그레이드 한 버전. 돌림힘이라는 파트 자체가 공부되어 있다면 난이도는 중 정도로 가능.
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">10</span>
+            <span class="item-num-type">선택형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge mid">중</div>
-          <div class="difficulty-label">MEDIUM</div>
         </div>
+        <div class="item-topic">돌림힘 · 막대 균형 (x₂/x₁)</div>
+        <div class="tag-row"><span class="tag">학프</span><span class="tag">완자</span></div>
+        <div class="item-comment">학교프린트에 있는 문제이자, 완자에 있는 문제를 업그레이드 한 버전. 돌림힘이라는 파트 자체가 공부되어 있다면 난이도는 중 정도로 가능.</div>
       </div>
 
       <div class="item easy">
-        <div class="item-num">11<small>SELECT</small></div>
-        <div class="item-body">
-          <div class="item-topic">a-t 그래프 해석</div>
-          <div class="item-comment">
-            <span class="tag">기초</span>
-            a-t 그래프 해석. 등가속도 운동의 기본문제. 기본서 1~2권 마스터 했으면 가능. 난이도 하.
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">11</span>
+            <span class="item-num-type">선택형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge easy">하</div>
-          <div class="difficulty-label">EASY</div>
         </div>
+        <div class="item-topic">a-t 그래프 해석</div>
+        <div class="tag-row"><span class="tag">기초</span></div>
+        <div class="item-comment">a-t 그래프 해석. 등가속도 운동의 기본문제. 기본서 1~2권 마스터 했으면 가능. 난이도 하.</div>
       </div>
 
       <div class="item mid">
-        <div class="item-num">12<small>SELECT</small></div>
-        <div class="item-body">
-          <div class="item-topic">뉴턴 통합 · 도르래 · 에너지</div>
-          <div class="item-comment">
-            <span class="tag warn">신규</span>
-            뉴턴 기본문제. 등가속도공식을 적용해도 풀리고 에너지 개념을 적용해도 풀린다. 난이도는 중. <strong>학교프린트나 교과서에는 없다.</strong>
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">12</span>
+            <span class="item-num-type">선택형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge mid">중</div>
-          <div class="difficulty-label">MEDIUM</div>
         </div>
+        <div class="item-topic">뉴턴 통합 · 도르래 · 에너지</div>
+        <div class="tag-row"><span class="tag warn">신규</span></div>
+        <div class="item-comment">뉴턴 기본문제. 등가속도공식을 적용해도 풀리고 에너지 개념을 적용해도 풀린다. 난이도는 중. <strong>학교프린트나 교과서에는 없다.</strong></div>
       </div>
 
       <div class="item easy">
-        <div class="item-num">13<small>SELECT</small></div>
-        <div class="item-body">
-          <div class="item-topic">무게중심 · 구조물 안정성</div>
-          <div class="item-comment">
-            <span class="tag">교과서</span>
-            교과서 수준의 문제. 난이도 하.
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">13</span>
+            <span class="item-num-type">선택형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge easy">하</div>
-          <div class="difficulty-label">EASY</div>
         </div>
+        <div class="item-topic">무게중심 · 구조물 안정성</div>
+        <div class="tag-row"><span class="tag">교과서</span></div>
+        <div class="item-comment">교과서 수준의 문제. 난이도 하.</div>
       </div>
 
       <div class="item easy">
-        <div class="item-num">14<small>SELECT</small></div>
-        <div class="item-body">
-          <div class="item-topic">열의 일당량 · 비열 계산</div>
-          <div class="item-comment">
-            <span class="tag warn">출제 적정성</span>
-            열의 일당량을 이용한 계산. 난이도 자체는 하. 다만 <strong>비상교과서에서 '비열'의 개념을 다루지 않았던 것 같은데… 이거 중등과학에서 배운 지식으로 하라는 건가?</strong>
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">14</span>
+            <span class="item-num-type">선택형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge easy">하</div>
-          <div class="difficulty-label">EASY</div>
         </div>
+        <div class="item-topic">열의 일당량 · 비열 계산</div>
+        <div class="tag-row"><span class="tag warn">출제 적정성</span></div>
+        <div class="item-comment">열의 일당량을 이용한 계산. 난이도 자체는 하. 다만 <strong>비상교과서에서 '비열'의 개념을 다루지 않았던 것 같은데… 이거 중등과학에서 배운 지식으로 하라는 건가?</strong></div>
       </div>
 
       <div class="item easy-mid">
-        <div class="item-num">15<small>SELECT</small></div>
-        <div class="item-body">
-          <div class="item-topic">도르래 연결계 · v-t 그래프</div>
-          <div class="item-comment">
-            <span class="tag">신규</span>
-            뉴턴문제의 하 또는 중 난이도. 학교프린트에는 없다.
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">15</span>
+            <span class="item-num-type">선택형</span>
           </div>
+          <div class="difficulty-badge easy-mid">하 ~ 중</div>
         </div>
-        <div class="item-difficulty">
-          <div class="difficulty-badge easy-mid" style="font-size: 14px; line-height: 1.2; padding-top: 14px;">하<br>중</div>
-          <div class="difficulty-label">EASY-MID</div>
-        </div>
+        <div class="item-topic">도르래 연결계 · v-t 그래프</div>
+        <div class="tag-row"><span class="tag">신규</span></div>
+        <div class="item-comment">뉴턴문제의 하 또는 중 난이도. 학교프린트에는 없다.</div>
       </div>
 
       <div class="item mid">
-        <div class="item-num">16<small>SELECT</small></div>
-        <div class="item-body">
-          <div class="item-topic">막대 균형 · x₂/x₁ 최솟·최댓값</div>
-          <div class="item-comment">
-            <span class="tag">완자</span>
-            완자에 있는 내용이고 난이도 자체는 중이지만 <strong>워낙에 노출이 많이 된 문제라 맞췄어야 한다.</strong>
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">16</span>
+            <span class="item-num-type">선택형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge mid">중</div>
-          <div class="difficulty-label">MEDIUM</div>
         </div>
+        <div class="item-topic">막대 균형 · x₂/x₁ 최솟·최댓값</div>
+        <div class="tag-row"><span class="tag">완자</span></div>
+        <div class="item-comment">완자에 있는 내용이고 난이도 자체는 중이지만 <strong>워낙에 노출이 많이 된 문제라 맞췄어야 한다.</strong></div>
       </div>
 
       <div class="item hard">
-        <div class="item-num">17<small>SELECT</small></div>
-        <div class="item-body">
-          <div class="item-topic">용수철 · 도르래 통합 (v_C/v_A)</div>
-          <div class="item-comment">
-            <span class="tag warn">킬러</span>
-            이건 <strong>난이도 상</strong>. 내용을 알고 푸는 데도 식이 좀 많이 필요하고 계산과정도 조금 긴 상태. <strong>17번까지 중에서는 이게 최고 난이도.</strong>
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">17</span>
+            <span class="item-num-type">선택형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge hard">상</div>
-          <div class="difficulty-label">HARD</div>
         </div>
+        <div class="item-topic">용수철 · 도르래 통합 (v_C/v_A)</div>
+        <div class="tag-row"><span class="tag warn">킬러</span></div>
+        <div class="item-comment">이건 <strong>난이도 상</strong>. 내용을 알고 푸는 데도 식이 좀 많이 필요하고 계산과정도 조금 긴 상태. <strong>17번까지 중에서는 이게 최고 난이도.</strong></div>
       </div>
 
       <div class="item hard">
-        <div class="item-num">18<small>SELECT</small></div>
-        <div class="item-body">
-          <div class="item-topic">도르래 연결계 · 실 끊어짐 · v-t</div>
-          <div class="item-comment">
-            <span class="tag warn">킬러</span><span class="tag warn">변형</span>
-            기본서 아니고, 학교프린트 아니고, 마더텅·자이스토리 등 고3기출 아니고 <strong>변형인 것 같다.</strong> 킬러라고 만든 문항 같고 맥락이 길어서 그렇지 착안하기 어려운 난이도는 아님. 난이도 중. <strong>그런데 아이들이 훈련이 잘 되지 않았을 테니 상으로 하겠음.</strong>
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">18</span>
+            <span class="item-num-type">선택형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge hard">상</div>
-          <div class="difficulty-label">HARD</div>
         </div>
+        <div class="item-topic">도르래 연결계 · 실 끊어짐 · v-t</div>
+        <div class="tag-row"><span class="tag warn">킬러</span><span class="tag warn">변형</span></div>
+        <div class="item-comment">기본서 아니고, 학교프린트 아니고, 마더텅·자이스토리 등 고3기출 아니고 <strong>변형인 것 같다.</strong> 킬러라고 만든 문항 같고 맥락이 길어서 그렇지 착안하기 어려운 난이도는 아님. 난이도 중. <strong>그런데 아이들이 훈련이 잘 되지 않았을 테니 상으로 하겠음.</strong></div>
       </div>
 
       <div class="item hard">
-        <div class="item-num">19<small>SELECT</small></div>
-        <div class="item-body">
-          <div class="item-topic">빗면 충돌 · 운동량 · 에너지</div>
-          <div class="item-comment">
-            <span class="tag warn">킬러</span><span class="tag warn">고3기출</span>
-            빗면에서 충돌. 학프에 없었고 <strong>이건 고3 기출 풀어야 훈련이 되는 문제.</strong> 개정 물리되고 나서 대부분의 기본서에서 이거 잘 다루지 않음. 개정 전 유행 문젠데… 좀 아쉽다. <strong>근데 이 유형 가르쳤어도 보통 똑같이 내도 아이들이 잘 못 푼다.</strong>
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">19</span>
+            <span class="item-num-type">선택형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge hard">상</div>
-          <div class="difficulty-label">HARD</div>
         </div>
+        <div class="item-topic">빗면 충돌 · 운동량 · 에너지</div>
+        <div class="tag-row"><span class="tag warn">킬러</span><span class="tag warn">고3기출</span></div>
+        <div class="item-comment">빗면에서 충돌. 학프에 없었고 <strong>이건 고3 기출 풀어야 훈련이 되는 문제.</strong> 개정 물리되고 나서 대부분의 기본서에서 이거 잘 다루지 않음. 개정 전 유행 문젠데… 좀 아쉽다. <strong>근데 이 유형 가르쳤어도 보통 똑같이 내도 아이들이 잘 못 푼다.</strong></div>
       </div>
 
       <div class="item mid">
-        <div class="item-num">20<small>SELECT</small></div>
-        <div class="item-body">
-          <div class="item-topic">열기관 A·B·C·D 열효율</div>
-          <div class="item-comment">
-            <span class="tag">계산주의</span>
-            열효율만 알면 푸는 문제. <strong>난이도 중 (산수 실수 할까봐).</strong>
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">20</span>
+            <span class="item-num-type">선택형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge mid">중</div>
-          <div class="difficulty-label">MEDIUM</div>
         </div>
+        <div class="item-topic">열기관 A·B·C·D 열효율</div>
+        <div class="tag-row"><span class="tag">계산주의</span></div>
+        <div class="item-comment">열효율만 알면 푸는 문제. <strong>난이도 중 (산수 실수 할까봐).</strong></div>
       </div>
+
     </div>
   </section>
 
   <!-- 섹션 4: 서답형 -->
   <section class="section">
     <div class="section-header">
-      <div class="section-num">04</div>
+      <div class="section-num">04 WRITE · Q.01 — Q.06</div>
       <div class="section-title">서답형 문항 분석</div>
-      <div class="section-sub">Q.01 — Q.06</div>
     </div>
 
     <div class="items-stack">
       <div class="item easy">
-        <div class="item-num">01<small>WRITE</small></div>
-        <div class="item-body">
-          <div class="item-topic">비가역 현상 · 용어 (완답형)</div>
-          <div class="item-comment">
-            <span class="tag">기초</span>
-            난이도 하. 코멘트 없음.
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">01</span>
+            <span class="item-num-type">서답형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge easy">하</div>
-          <div class="difficulty-label">EASY</div>
         </div>
+        <div class="item-topic">비가역 현상 · 용어 (완답형)</div>
+        <div class="tag-row"><span class="tag">기초</span></div>
+        <div class="item-comment">난이도 하. 코멘트 없음.</div>
       </div>
 
       <div class="item easy">
-        <div class="item-num">02<small>WRITE</small></div>
-        <div class="item-body">
-          <div class="item-topic">열기관 열효율 비 · Q_A:Q_B</div>
-          <div class="item-comment">
-            <span class="tag">기초</span>
-            열역학의 열효율 공식 한 개만으로 푸는 수학. <strong>중등 수학 수준.</strong> 난이도 하.
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">02</span>
+            <span class="item-num-type">서답형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge easy">하</div>
-          <div class="difficulty-label">EASY</div>
         </div>
+        <div class="item-topic">열기관 열효율 비 · Q_A:Q_B</div>
+        <div class="tag-row"><span class="tag">기초</span></div>
+        <div class="item-comment">열역학의 열효율 공식 한 개만으로 푸는 수학. <strong>중등 수학 수준.</strong> 난이도 하.</div>
       </div>
 
       <div class="item easy">
-        <div class="item-num">03<small>WRITE</small></div>
-        <div class="item-body">
-          <div class="item-topic">열기관 일 W (30J)</div>
-          <div class="item-comment">
-            <span class="tag">기초</span>
-            열효율 공식 한 개로 풀이. <strong>중등 수학 수준.</strong> 난이도 하.
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">03</span>
+            <span class="item-num-type">서답형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge easy">하</div>
-          <div class="difficulty-label">EASY</div>
         </div>
+        <div class="item-topic">열기관 일 W (30J)</div>
+        <div class="tag-row"><span class="tag">기초</span></div>
+        <div class="item-comment">열효율 공식 한 개로 풀이. <strong>중등 수학 수준.</strong> 난이도 하.</div>
       </div>
 
       <div class="item easy">
-        <div class="item-num">04<small>WRITE</small></div>
-        <div class="item-body">
-          <div class="item-topic">뉴턴법칙 · 보기 판별</div>
-          <div class="item-comment">
-            <span class="tag">기초</span>
-            뉴턴법칙에 관한 서술. 난이도 하.
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">04</span>
+            <span class="item-num-type">서답형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge easy">하</div>
-          <div class="difficulty-label">EASY</div>
         </div>
+        <div class="item-topic">뉴턴법칙 · 보기 판별</div>
+        <div class="tag-row"><span class="tag">기초</span></div>
+        <div class="item-comment">뉴턴법칙에 관한 서술. 난이도 하.</div>
       </div>
 
       <div class="item easy">
-        <div class="item-num">05<small>WRITE</small></div>
-        <div class="item-body">
-          <div class="item-topic">B의 운동방정식 · 12N 연결계</div>
-          <div class="item-comment">
-            <span class="tag">기초</span>
-            마찰도 없고 운동방정식 쓰는 기본문제. 난이도 하.
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">05</span>
+            <span class="item-num-type">서답형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge easy">하</div>
-          <div class="difficulty-label">EASY</div>
         </div>
+        <div class="item-topic">B의 운동방정식 · 12N 연결계</div>
+        <div class="tag-row"><span class="tag">기초</span></div>
+        <div class="item-comment">마찰도 없고 운동방정식 쓰는 기본문제. 난이도 하.</div>
       </div>
 
       <div class="item easy">
-        <div class="item-num">06<small>WRITE</small></div>
-        <div class="item-body">
-          <div class="item-topic">a_A, a_B, a_C 가속도</div>
-          <div class="item-comment">
-            <span class="tag">기초</span>
-            <strong>코멘트할 가치가 없는 난이도.</strong>
+        <div class="item-head">
+          <div class="item-num-block">
+            <span class="item-num">06</span>
+            <span class="item-num-type">서답형</span>
           </div>
-        </div>
-        <div class="item-difficulty">
           <div class="difficulty-badge easy">하</div>
-          <div class="difficulty-label">EASY</div>
         </div>
+        <div class="item-topic">a_A, a_B, a_C 가속도</div>
+        <div class="tag-row"><span class="tag">기초</span></div>
+        <div class="item-comment"><strong>코멘트할 가치가 없는 난이도.</strong></div>
       </div>
     </div>
   </section>
@@ -1015,24 +1071,27 @@
     <div class="killer-box">
       <div class="label">KILLER · 17 · 18 · 19</div>
       <p>
-        17, 18, 19 — 이 <strong>3개 킬러 인정.</strong><br><br>
+        17, 18, 19 — 이 <strong>3개 킬러 인정.</strong>
+      </p>
+      <p>
         <em>물리에 진정 공부 되어 있는 자</em>가 맞춘다.<br>
         <strong>학교프린트만 공략하고 게으른 자 절대 못한다.</strong>
       </p>
-      <p style="margin-top: 18px; font-size: 17px; font-family: 'Noto Serif KR', serif; font-weight: 700; color: var(--gold); border-top: 1px solid rgba(176, 141, 87, 0.3); padding-top: 16px;">
+      <div class="punchline">
         ▶ 자, 우리 기말에는<br>
-        <em style="color: var(--paper); background: var(--accent); padding: 4px 10px; display: inline-block; margin-top: 6px;">'진정 공부 되어 있는 자'</em> 가 되어 보자.
-      </p>
+        <span class="punchline-quote">'진정 공부 되어 있는 자'</span> 가 되어 보자.
+      </div>
     </div>
 
     <div class="verdict-block">
       <div class="verdict-block-title">대신고 기말 대비 전략</div>
       <p>
-        대신고의 기말대비는 <strong>기본서 3권 + 마더텅 또는 자이</strong>를 병행한다.<br>
-        사실 외부 문제가 나오는 걸 준비하기 위해서 마더텅 또는 자이를 푸는 건 <em>가성비가 안 좋다.</em><br>
-        본인의 수준과 실력이 준비가 되었으면 하시고, 아니면 <strong>기본서 3권이라도 마스터하는 게 먼저.</strong>
+        대신고의 기말대비는 <strong>기본서 3권 + 마더텅 또는 자이</strong>를 병행한다.
       </p>
-      <p style="margin-top: 14px;">
+      <p>
+        사실 외부 문제가 나오는 걸 준비하기 위해서 마더텅 또는 자이를 푸는 건 가성비가 안 좋다. 본인의 수준과 실력이 준비가 되었으면 하시고, 아니면 <strong>기본서 3권이라도 마스터하는 게 먼저.</strong>
+      </p>
+      <p>
         <strong>기본서 3권 마스터 하기 전에 마더텅·자이 보는 거 손해.</strong> 나와도 못 푼다.
       </p>
     </div>
@@ -1040,7 +1099,9 @@
     <div class="verdict-block">
       <div class="verdict-block-title">'물리는 최성훈' 기말 계획</div>
       <p>
-        <strong>전기, 자기, 파동, 반도체, 상대론</strong> — 할 거 개많음.<br>
+        <strong>전기, 자기, 파동, 반도체, 상대론</strong> — 할 거 개많음.
+      </p>
+      <p>
         <strong>3회 안에 진도 모두 마치고 문제 전부 한방에 모두 주겠음.</strong>
       </p>
     </div>
@@ -1063,7 +1124,7 @@
   </div>
 
   <div class="footer">
-    물리는 최성훈 · 클라스가 다르다 · DAESHIN 26A ANALYSIS
+    물리는 최성훈 · 클라스가 다르다
   </div>
 </div>
 </body>
